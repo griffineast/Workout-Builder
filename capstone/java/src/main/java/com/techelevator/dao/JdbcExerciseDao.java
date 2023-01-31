@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Exercise;
 import com.techelevator.model.User;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,22 +46,20 @@ public class JdbcExerciseDao implements ExerciseDao {
     }
 
     @Override
-    public boolean createExercise(String exercise_name, String exercise_description, int suggested_weight, int num_of_reps, int duration, String target_area) {
-        String insertExerciseSql = "insert into exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) values (?,?,?,?,?,?)";
+    public boolean createExercise(Exercise exercise) {
+        String sql = "insert into exercise(exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES (?,?,?,?,?,?) RETURNING exercise_id";
+        Integer newId;
+        try{
+            newId = jdbcTemplate.queryForObject(sql,
+                    Integer.class, exercise.getExercise_name(), exercise.getExercise_description(), exercise.getSuggested_weight(), exercise.getNum_of_reps(), exercise.getDuration(), exercise.getTarget_area());
+            exercise.setExercise_id(newId);
+        }catch (DataAccessException e){
+            return false;
+        }
+        return true;
 //        String password_hash = new BCryptPasswordEncoder().encode(password);
 //        String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
-
-        return jdbcTemplate.update(insertExerciseSql, exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) == 1;
     }
-
-
-
-
-
-
-
-
-
 
 
     private Exercise mapRowToExercise(SqlRowSet rs) {

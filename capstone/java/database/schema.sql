@@ -22,4 +22,17 @@ CREATE TABLE exercise (
 	CONSTRAINT PK_exercise PRIMARY KEY (exercise_id)
 );
 
+CREATE TABLE workout (
+    workout_id SERIAL,
+    user_id int,
+    workout_date varchar(50),
+    arms_duration int,
+    legs_duration int,
+    back_duration int,
+    ab_duration int,
+
+    CONSTRAINT PK_workout PRIMARY KEY (workout_id),
+    CONSTRAINT FK_workout FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
 COMMIT TRANSACTION;

@@ -1,31 +1,8 @@
 <template>
-  <div class="add-exercise">
-    <div class="container">
-      <div class="row">
-        <!-- the col classes below are built in to the bootstrap grid layout. the grid has 12 columbns; 'col-md-3' refers to sections viewed on a 
-        medium size display and the number 3 is how many columns each section will use. 4 columns will display when 'col-md-3'. 3 columns for 'col-sm-4 on small screens
-        and 1 column for col-12 for the smallest size screen  -->
-        <div
-          v-for="exercise in this.$store.state.exercises"
-          :key="exercise.exercise_id"
-          class="col-12 col-sm-4 col-md-3"
-        >
-          <div class="exercises">
-            <h5>{{ exercise.exercise_name }}</h5>
-            <p>{{ exercise.exercise_description }}</p>
-            <p>Suggested Weight: {{ exercise.suggested_weight }}lbs.</p>
-            <p>Number of Reps: {{ exercise.num_of_reps }}</p>
-            <p>Duration: {{ exercise.duration }}min.</p>
-            <p>Target Area: {{ exercise.target_area }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise-form" id="exercise-form">
-    
+  <div class="exercise-form">
+    <div id="exercise-form">
       <button
-        class="btn btn-primary show-form-btn"
+        class="btn btn-primary show-form-btn shadow"
         v-if="showForm === false"
         v-on:click.prevent="toggleMenu"
       >
@@ -51,6 +28,7 @@
             class="form-control"
             rows="3"
             id="description"
+            maxlength="140"
             v-model="exercise.exercise_description"
           />
         </div>
@@ -92,7 +70,7 @@
           <label for="target-area">Target Area: </label>
           <select
             required
-            class="form-select"
+            class="form-select selectpicker"
             id="target-area"
             v-model="exercise.target_area"
           >
@@ -160,54 +138,45 @@ export default {
       }, 50);
     },
   },
-
-  // displays the list of exercises when page is opened
-  created() {
-    service.getExercises().then((response) => {
-      if (response.status === 200) {
-        this.$store.state.exercises = response.data;
-      }
-    });
-  },
 };
 </script>
 
 <style scoped>
-
-
-
-.exercises {
-  padding: 10px;
-  background: rgb(248, 249, 250);
-  margin: 10px 10px 10px 10px;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
 .exercise-form {
-  width: 500px;
+  width: 50%;
+  min-width: 200px;
+  max-width: 300px;
   top: 40%;
-  margin-top: 10%;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align: ce;
+  
 }
 
 .show-form-btn {
-  width: 500px;
-  margin-bottom: 40px;
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  min-width: 300px;
+  max-width: 400px;
+  width: 100;
+
 }
 
 .add-exercise-btn {
-  width: 500px;
-  margin-top: 10px;
+  background-color: rgb(182, 182, 182);
+  border-color: rgb(173, 173, 173);
+  width: 100%;
+  margin-top: 30px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+.add-exercise-btn:hover {
+  background-color: rgb(128, 128, 128);
+  border-color: rgb(100, 100, 100);
+}
+
 .cancel-btn {
-  width: 500px;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 40px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);

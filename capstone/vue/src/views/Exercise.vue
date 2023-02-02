@@ -1,16 +1,23 @@
 <template>
   <div>
-    <add-exercise />
+    <exercise-cards/>
+    <exercise-form/>
   </div>
 </template>
 
 <script>
-import AddExercise from "../components/AddExercise.vue";
+import ExerciseCards from '../components/ExerciseCards.vue';
+import ExerciseForm from '../components/ExerciseForm.vue'
+
+
 export default {
   name: "Exercise",
   components: {
-    AddExercise,
+    ExerciseCards,
+    ExerciseForm,
+    
   },
+   
 };
 </script>
 

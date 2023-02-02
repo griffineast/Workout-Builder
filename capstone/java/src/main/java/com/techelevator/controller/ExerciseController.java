@@ -20,10 +20,16 @@ public class ExerciseController {
         return exerciseDao.allExercises();
     }
 
+    @RequestMapping(path = "/exercise/{id}", method = RequestMethod.GET)
+    public Exercise getExerciseById(@PathVariable int id) {
+       return exerciseDao.getExerciseById(id);
+    }
+
     @RequestMapping(path = "/exercise/add", method = RequestMethod.POST)
     public Exercise addNewExercise(@RequestBody Exercise exercise) {
-        exerciseDao.createExercise(exercise);
-        return exercise;
+//        exerciseDao.createExercise(exercise);
+//        return exercise;
+        return exerciseDao.createExercise(exercise);
     }
 
     @RequestMapping(path = "/exercise/{id}", method = RequestMethod.PUT)

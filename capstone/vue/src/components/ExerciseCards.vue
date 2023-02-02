@@ -10,6 +10,14 @@
         class="col-12 col-sm-6 col-md-4 col-lg-3"
       >
         <div class="exercises shadow-sm">
+          <button
+            v-if="isTrainer()"
+            @click="deleteExercise(exercise.exercise_id)"
+            class="delete-btn btn"
+          >
+          <i class="bi bi-trash3"></i>
+          </button>
+          
           <h4 class="card-title">{{ exercise.exercise_name }}</h4>
           <p>{{ exercise.exercise_description }}</p>
           <p class="card-details">
@@ -26,20 +34,33 @@
 
 <script>
 import service from "../services/ExerciseService.js";
-
+import {isTrainer} from "../util/util.js";
 export default {
-  data() {
-    return {};
-  },
-  methods: {},
-
-  // displays the list of exercises when page is opened
+  // displays the list of exercises when page is loaded
   created() {
+   
     service.getExercises().then((response) => {
       if (response.status === 200) {
         this.$store.state.exercises = response.data;
       }
     });
+  },
+
+  data() {
+    return {};
+  },
+  methods: {
+    deleteExercise(id) {
+      if (!window.confirm("Are you sure you would like to delete?")) return;
+      service.deleteExercise(id).then((response) => {
+        if(response.status !== 200) {
+          return;
+        }
+        this.$store.commit("DELETE_EXERCISE", id)
+      }).catch((err) => console.log(err));
+
+    },
+    isTrainer,
   },
 };
 </script>
@@ -51,22 +72,29 @@ export default {
   margin-right: 50px;
 }
 
-.exercises:hover {
-  transition: all 0.2s ease-in-out;
-  transform: scale(1.05);
-  margin-top: 10px;
-}
-
-.card-details {
-  margin-bottom: 1px;
-}
-
 .exercises {
   padding: 10px;
   background: rgb(248, 249, 250);
   margin: 10px 10px 10px 10px;
   width: 100%;
   min-height: 270px;
+  position: relative;
+}
+
+.exercises:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.05);
+  margin-top: 10px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.card-details {
+  margin-bottom: 1px;
 }
 
 .card-title {

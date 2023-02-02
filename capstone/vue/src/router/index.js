@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Exercise from '../views/Exercise.vue'
 import Trainer from '../views/Trainer.vue'
+import DeleteExercise from '../components/DeleteExercise.vue'
 
 Vue.use(Router)
 
@@ -70,7 +71,16 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: "/delete/:id",
+      name: "DeleteExercise",
+      component: DeleteExercise,
+      meta: {
+        requiresAuth: true
+      }
     }
+
   ]
 })
 

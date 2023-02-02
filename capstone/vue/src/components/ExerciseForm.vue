@@ -121,7 +121,8 @@ export default {
         if (response.status === 200) {
           // using the ADD_EXERCISE mutator updates the state when adding a new exercise
           // new exercise is available to view on the page without a refresh
-          this.$store.commit("ADD_EXERCISE", this.exercise);
+          
+          this.$store.commit("ADD_EXERCISE", response.data);
           this.exercise = {};
           this.$router.push({ name: "Exercise" });
         }

@@ -10,7 +10,9 @@ public interface ExerciseDao {
 
     Exercise getExerciseById(int exerciseId);
 
-    boolean createExercise(Exercise exercise);
+//    boolean createExercise(Exercise exercise);
+
+    Exercise createExercise(Exercise exercise);
 
     Exercise updateExercise(Exercise exercise, int id);
 

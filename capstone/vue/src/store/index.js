@@ -41,6 +41,12 @@ export default new Vuex.Store({
     },
     ADD_EXERCISE(state, exercise) {
       state.exercises.push(exercise);
+    },
+    DELETE_EXERCISE(state, id) {
+      const index = state.exercises.findIndex(e => e.exercise_id === id);
+      if(index > -1) state.exercises.splice(index, 1);
+
+
     }
   }
 })

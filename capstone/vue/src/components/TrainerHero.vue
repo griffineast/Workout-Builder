@@ -39,7 +39,8 @@ export default {};
 .welcome {
     color: white;
     margin-left: 50px;
-    margin-top: 50px;
+    margin-top: 50%;
+    margin-bottom: 50%;
     width: 300px;
 }
 
@@ -47,6 +48,9 @@ export default {};
     margin-left: 50px;
     width: 300px;
     color: ghostwhite;
+     margin-top: 0%;
+    margin-bottom: 50%;
+    
 }
 
 </style>

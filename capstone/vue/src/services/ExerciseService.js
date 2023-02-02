@@ -5,6 +5,13 @@ export default {
     },
     getExercises() {
         return axios.get('/exercise')
+    },
+    getExerciseById(id) {
+        return axios.get(`/exercise/${id}`)
+    },
+    
+    deleteExercise(id) {
+        return axios.delete(`/exercise/${id}`);
     }
 
 }

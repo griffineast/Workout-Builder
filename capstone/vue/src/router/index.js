@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Exercise from '../views/Exercise.vue'
+import Trainer from '../views/Trainer.vue'
 
 Vue.use(Router)
 
@@ -59,7 +60,15 @@ const router = new Router({
       name: "Exercise",
       component: Exercise,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }   
+    },
+    {
+      path: "/trainer",
+      name: "Trainer",
+      component: Trainer,
+      meta: {
+        requiresAuth: true
       }
     }
   ]

@@ -9,19 +9,15 @@
         :key="exercise.exercise_id"
         class="col-12 col-sm-6 col-md-4 col-lg-3"
       >
-        <div class="exercises shadow">
-          <h4>{{ exercise.exercise_name }}</h4>
+        <div class="exercises shadow-sm">
+          <h4 class="card-title">{{ exercise.exercise_name }}</h4>
           <p>{{ exercise.exercise_description }}</p>
-          <p class="exercise-details">
+          <p class="card-details">
             Suggested Weight: {{ exercise.suggested_weight }}lbs.
           </p>
-          <p class="exercise-details">
-            Number of Reps: {{ exercise.num_of_reps }}
-          </p>
-          <p class="exercise-details">Duration: {{ exercise.duration }}min.</p>
-          <p class="exercise-details">
-            Target Area: {{ exercise.target_area }}
-          </p>
+          <p class="card-details">Number of Reps: {{ exercise.num_of_reps }}</p>
+          <p class="card-details">Duration: {{ exercise.duration }}min.</p>
+          <p class="card-details">Target Area: {{ exercise.target_area }}</p>
         </div>
       </div>
     </div>
@@ -55,7 +51,13 @@ export default {
   margin-right: 50px;
 }
 
-.exercise-details {
+.exercises:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.05);
+  margin-top: 10px;
+}
+
+.card-details {
   margin-bottom: 1px;
 }
 
@@ -64,12 +66,11 @@ export default {
   background: rgb(248, 249, 250);
   margin: 10px 10px 10px 10px;
   width: 100%;
-  border-radius: 10px;
   min-height: 270px;
 }
 
-h4 {
-  color: rgb(236, 93, 93);
+.card-title {
+  color: rgb(219, 68, 55);
   font-style: oblique;
   font-weight: bold;
 }

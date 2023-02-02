@@ -2,7 +2,7 @@
   <div class="exercise-form">
     <div id="exercise-form">
       <button
-        class="btn btn-primary show-form-btn shadow"
+        class="btn btn-primary show-form-btn shadow-sm"
         v-if="showForm === false"
         v-on:click.prevent="toggleMenu"
       >
@@ -86,7 +86,7 @@
         </div>
 
         <button
-          class="btn btn-primary add-exercise-btn"
+          class="btn btn-primary add-exercise-btn shadow-sm"
           v-if="showForm === true"
           type="submit"
         >
@@ -94,7 +94,7 @@
         </button>
 
         <button
-          class="btn btn-primary btn-danger cancel-btn"
+          class="btn btn-primary btn-danger cancel-btn shadow-sm"
           v-if="showForm === true"
           v-on:click.prevent="resetForm"
         >
@@ -167,7 +167,7 @@ export default {
   border-color: rgb(173, 173, 173);
   width: 100%;
   margin-top: 30px;
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+ 
 }
 
 .add-exercise-btn:hover {
@@ -179,6 +179,6 @@ export default {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 40px;
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+ 
 }
 </style>

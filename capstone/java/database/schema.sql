@@ -53,7 +53,7 @@ CREATE TABLE workout (
     workout_id SERIAL,
     workout_name varchar(50),
     user_id int,
-    exercises varchar(500),
+    exercise int,
 
     CONSTRAINT PK_workout PRIMARY KEY (workout_id)
 );

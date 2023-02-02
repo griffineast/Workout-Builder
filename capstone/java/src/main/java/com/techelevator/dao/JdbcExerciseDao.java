@@ -31,7 +31,6 @@ public class JdbcExerciseDao implements ExerciseDao {
             Exercise exercise = mapRowToExercise(results);
             exercises.add(exercise);
         }
-
         return exercises;
     }
 
@@ -118,6 +117,4 @@ public class JdbcExerciseDao implements ExerciseDao {
 
         return exercise;
     }
-
-
 }

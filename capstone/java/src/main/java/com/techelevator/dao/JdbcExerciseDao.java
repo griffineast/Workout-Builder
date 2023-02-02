@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -61,6 +62,36 @@ public class JdbcExerciseDao implements ExerciseDao {
 //        String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
     }
 
+    @Override
+    public Exercise updateExercise(Exercise exercise, int id) {
+        try {
+            String sql = "UPDATE exercise SET exercise_name = ? WHERE exercise_id = ?";
+            jdbcTemplate.update(sql, exercise.getExercise_name(), id);
+            sql = "UPDATE exercise SET exercise_description = ? WHERE exercise_id = ?";
+            jdbcTemplate.update(sql, exercise.getExercise_description(), id);
+            sql = "UPDATE exercise SET suggested_weight = ? WHERE exercise_id = ?";
+            jdbcTemplate.update(sql, exercise.getSuggested_weight(), id);
+            sql = "UPDATE exercise SET num_of_reps = ? WHERE exercise_id = ?";
+            jdbcTemplate.update(sql, exercise.getNum_of_reps(), id);
+            sql = "UPDATE exercise SET duration = ? WHERE exercise_id = ?";
+            jdbcTemplate.update(sql, exercise.getDuration(), id);
+            sql = "UPDATE exercise SET target_area = ? WHERE exercise_id = ?";
+            jdbcTemplate.update(sql, exercise.getTarget_area(), id);
+        } catch (DataAccessException e){
+            System.out.println("Failed to update exercise " + id + "!");
+        }
+        return exercise;
+    }
+
+    @Override
+    public void deleteExercise(int id) {
+        String sql = "DELETE FROM exercise WHERE exercise_id = ?";
+        try {
+            jdbcTemplate.update(sql, id);
+        } catch (DataAccessException e){
+            System.out.println("Failed to delete exercise " + id + "!");
+        }
+    }
 
     private Exercise mapRowToExercise(SqlRowSet rs) {
         Exercise exercise = new Exercise();

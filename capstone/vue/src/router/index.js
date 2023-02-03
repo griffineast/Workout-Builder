@@ -7,7 +7,8 @@ import Register from "../views/Register.vue";
 import store from "../store/index";
 import Exercise from "../views/Exercise.vue";
 import Trainer from "../views/Trainer.vue";
-import DeleteExercise from "../components/DeleteExercise.vue";
+import UpdateForm from "../components/UpdateForm.vue"
+// import DeleteExercise from "../components/DeleteExercise.vue";
 
 Vue.use(Router);
 
@@ -30,7 +31,7 @@ const router = new Router({
       component: Home,
       meta: {
         requiresAuth: true,
-        title: "Home"
+        title: "Home",
       },
     },
     {
@@ -71,15 +72,24 @@ const router = new Router({
       component: Trainer,
       meta: {
         requiresAuth: true,
-        title: "Dashboard"
+        title: "Dashboard",
       },
     },
+    // {
+    //   path: "/delete/:id",
+    //   name: "DeleteExercise",
+    //   component: DeleteExercise,
+    //   meta: {
+    //     requiresAuth: true,
+    //   },
+    // },
     {
-      path: "/delete/:id",
-      name: "DeleteExercise",
-      component: DeleteExercise,
+      path: "/edit/:id",
+      name: "Edit",
+      component: UpdateForm,
       meta: {
         requiresAuth: true,
+        title: "Update Exercise",
       },
     },
   ],

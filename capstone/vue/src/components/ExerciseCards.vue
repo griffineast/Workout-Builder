@@ -15,9 +15,9 @@
             @click="deleteExercise(exercise.exercise_id)"
             class="delete-btn btn"
           >
-          <i class="bi bi-trash3"></i>
+            <i class="bi bi-trash3"></i>
           </button>
-          
+
           <h4 class="card-title">{{ exercise.exercise_name }}</h4>
           <p>{{ exercise.exercise_description }}</p>
           <p class="card-details">
@@ -26,6 +26,15 @@
           <p class="card-details">Number of Reps: {{ exercise.num_of_reps }}</p>
           <p class="card-details">Duration: {{ exercise.duration }}min.</p>
           <p class="card-details">Target Area: {{ exercise.target_area }}</p>
+          <div class="text-center">
+            <button
+              v-if="isTrainer()"
+              @click="updateExercise(exercise.exercise_id)"
+              class="btn btn-primary edit-btn"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -34,11 +43,10 @@
 
 <script>
 import service from "../services/ExerciseService.js";
-import {isTrainer} from "../util/util.js";
+import { isTrainer } from "../util/util.js";
 export default {
   // displays the list of exercises when page is loaded
   created() {
-   
     service.getExercises().then((response) => {
       if (response.status === 200) {
         this.$store.state.exercises = response.data;
@@ -47,26 +55,36 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      exercise: {},
+    };
   },
   methods: {
     deleteExercise(id) {
-      if (!window.confirm("Are you sure you would like to delete this exercise?")) return;
-      service.deleteExercise(id).then((response) => {
-        if(response.status !== 200) {
-          return;
-        }
-        this.$store.commit("DELETE_EXERCISE", id)
-      }).catch((err) => console.log(err));
-
+      if (
+        !window.confirm("Are you sure you would like to delete this exercise?")
+      )
+        return;
+      service
+        .deleteExercise(id)
+        .then((response) => {
+          if (response.status !== 200) {
+            return;
+          }
+          this.$store.commit("DELETE_EXERCISE", id);
+        })
+        .catch((err) => console.log(err));
     },
     isTrainer,
+
+    updateExercise(id) {
+      this.$router.push({ path: `/edit/${id}` });
+    },
   },
 };
 </script>
 
 <style scoped>
-
 .exercise-cards {
   margin-bottom: 0px;
   margin-left: 50px;
@@ -90,7 +108,7 @@ export default {
 
 .delete-btn {
   position: absolute;
-  top: 0px;
+  bottom: 0px;
   right: 0px;
   border: none;
   background-color: transparent;
@@ -99,6 +117,22 @@ export default {
 .delete-btn:hover {
   color: rgb(219, 68, 55);
 }
+
+.edit-btn {
+  color: black;
+  position: absolute;
+  bottom: 25px;
+  right: 0px;
+  border: none;
+  background-color: transparent;
+
+}
+
+.edit-btn:hover {
+  color: rgb(219, 68, 55);
+}
+  
+
 
 .card-details {
   margin-bottom: 1px;
@@ -109,4 +143,6 @@ export default {
   font-style: oblique;
   font-weight: bold;
 }
+
+
 </style>

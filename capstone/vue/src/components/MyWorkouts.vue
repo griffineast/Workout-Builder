@@ -8,8 +8,15 @@
         <div class="col shadow"><h1>Workout 4</h1></div>
       </div>
 
-      <div class="row exercises">
-        <div class="col"><h1>Build a Workout</h1></div>
+      <div class="row target-areas">
+        <div class="col "><h2>Biceps</h2></div>
+        <div class="col "><h2>Triceps</h2></div>
+        <div class="col "><h2>Chest</h2></div>
+        <div class="col "><h2>Shoulders</h2></div>
+        <div class="col "><h2>Abs</h2></div>
+        <div class="col "><h2>Legs</h2></div>
+        <div class="col "><h2>Back</h2></div>
+        <div class="col "><h2>Cardio</h2></div>
       </div>
     </div>
   </div>
@@ -20,6 +27,11 @@ export default {};
 </script>
 
 <style scoped>
+.workouts {
+  margin-bottom: 50px;;
+}
+
+
 .workouts .col {
   padding: 10px;
   color: white;
@@ -36,10 +48,19 @@ export default {};
   margin-top: 10px;
 }
 
-.exercises .col {
+.target-areas .col {
   color: white;
   background-color: gainsboro;
-  margin: 10px 10px 10px 10px;
-  min-height: 100px;
+  margin: 10px;
 }
+
+.target-areas .col:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.05);
+  margin-top: 10px;
+}
+
+
+
+
 </style>

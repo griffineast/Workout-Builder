@@ -65,7 +65,7 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             if (isTrainer(response.data.user)) {
-              this.$router.push("Trainer");
+              this.$router.push("trainer");
             } else {
               this.$router.push("/");
             }

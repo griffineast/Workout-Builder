@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     deleteExercise(id) {
-      if (!window.confirm("Are you sure you would like to delete?")) return;
+      if (!window.confirm("Are you sure you would like to delete this exercise?")) return;
       service.deleteExercise(id).then((response) => {
         if(response.status !== 200) {
           return;
@@ -90,8 +90,14 @@ export default {
 
 .delete-btn {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+.delete-btn:hover {
+  color: rgb(219, 68, 55);
 }
 
 .card-details {

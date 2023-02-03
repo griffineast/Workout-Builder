@@ -124,13 +124,16 @@ export default {
           
           this.$store.commit("ADD_EXERCISE", response.data);
           this.exercise = {};
-          this.$router.push({ name: "Exercise" });
+          // this.$router.push({ name: "Exercise" });
+          document.getElementById("navbar").scrollIntoView();
+          this.showForm = false;
         }
       });
     },
     resetForm() {
       this.showForm = false;
       this.exercise = {};
+      document.getElementById("navbar").scrollIntoView();
     },
     toggleMenu() {
       this.showForm = true;

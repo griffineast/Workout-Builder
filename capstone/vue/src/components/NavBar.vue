@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3" id="navbar">
       <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">
         <img src="/img/logo.png" width="50" height="50" alt="" />
         Workout Builder

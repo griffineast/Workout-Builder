@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
-import store from '../store/index'
-import Exercise from '../views/Exercise.vue'
-import Trainer from '../views/Trainer.vue'
-import DeleteExercise from '../components/DeleteExercise.vue'
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
+import Logout from "../views/Logout.vue";
+import Register from "../views/Register.vue";
+import store from "../store/index";
+import Exercise from "../views/Exercise.vue";
+import Trainer from "../views/Trainer.vue";
+import DeleteExercise from "../components/DeleteExercise.vue";
 
-Vue.use(Router)
+Vue.use(Router);
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -21,80 +21,88 @@ Vue.use(Router)
  */
 
 const router = new Router({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: Home,
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+        title: "Home"
+      },
     },
     {
       path: "/login",
       name: "login",
       component: Login,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       path: "/logout",
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       path: "/register",
       name: "register",
       component: Register,
       meta: {
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       path: "/exercise",
       name: "Exercise",
       component: Exercise,
       meta: {
-        requiresAuth: true
-      }   
+        requiresAuth: true,
+      },
     },
     {
       path: "/trainer",
       name: "Trainer",
       component: Trainer,
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+        title: "Dashboard"
+      },
     },
     {
       path: "/delete/:id",
       name: "DeleteExercise",
       component: DeleteExercise,
       meta: {
-        requiresAuth: true
-      }
-    }
-
-  ]
-})
+        requiresAuth: true,
+      },
+    },
+  ],
+});
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
 
   // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
+  if (requiresAuth && store.state.token === "") {
     next("/login");
   } else {
     // Else let them go to their next destination
     next();
   }
+});
+
+// Dynamically change the document title with meta fields above. If none provided will default to what is set below.
+router.afterEach((to) => {
+  Vue.nextTick(() => {
+    document.title = to.meta.title || "Workout Builder";
+  });
 });
 
 export default router;

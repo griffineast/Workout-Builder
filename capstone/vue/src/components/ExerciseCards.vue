@@ -66,6 +66,7 @@ export default {
 </script>
 
 <style scoped>
+
 .exercise-cards {
   margin-bottom: 0px;
   margin-left: 50px;

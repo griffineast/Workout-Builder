@@ -27,9 +27,9 @@ public class ExerciseController {
 
     @RequestMapping(path = "/exercise/add", method = RequestMethod.POST)
     public Exercise addNewExercise(@RequestBody Exercise exercise) {
-//        exerciseDao.createExercise(exercise);
-//        return exercise;
-        return exerciseDao.createExercise(exercise);
+        exerciseDao.createExercise(exercise);
+        return exercise;
+//        return exerciseDao.createExercise(exercise);
     }
 
     @RequestMapping(path = "/exercise/{id}", method = RequestMethod.PUT)

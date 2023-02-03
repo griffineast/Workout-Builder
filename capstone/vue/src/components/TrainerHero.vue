@@ -20,7 +20,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 
 .trainer-hero {
     margin: 0px;

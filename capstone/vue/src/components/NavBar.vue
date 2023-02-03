@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow py-3">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3">
       <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">
         <img src="/img/logo.png" width="50" height="50" alt="" />
         Workout Builder
@@ -11,6 +11,7 @@
           <router-link
             class="nav-item nav-link active"
             v-bind:to="{ name: 'home' }"
+            v-if="$store.state.token != ''"
             >Home
           </router-link>
 
@@ -55,15 +56,37 @@ export default {};
   font-size: 20px;
 }
 
-
-.nav-link {
-  color: darkgray !important;
-}
-
-.nav-link:hover {
+/* .nav-link:hover {
   color: red !important;
   transition: all 0.2s ease-in-out;
   transform: scale(1.1);
+} */
+
+.nav-link {
+  position: relative;
+  color: rgb(143, 143, 143) !important;
+}
+
+.nav-link:hover {
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 1px;
+  background-color: rgb(219, 68, 55);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 .nav-bar {

@@ -45,34 +45,34 @@ public class JdbcExerciseDao implements ExerciseDao {
         }
     }
 
-//    @Override
-//    public boolean createExercise(Exercise exercise) {
-//        String sql = "insert into exercise(exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES (?,?,?,?,?,?) RETURNING exercise_id";
-//        Integer newId;
-//        try{
-//            newId = jdbcTemplate.queryForObject(sql,
-//                    Integer.class, exercise.getExercise_name(), exercise.getExercise_description(), exercise.getSuggested_weight(), exercise.getNum_of_reps(), exercise.getDuration(), exercise.getTarget_area());
-//            exercise.setExercise_id(newId);
-//        }catch (DataAccessException e){
-//            return false;
-//        }
-//        return true;
-//    }
-
     @Override
-    public Exercise createExercise(Exercise exercise) {
+    public boolean createExercise(Exercise exercise) {
         String sql = "insert into exercise(exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES (?,?,?,?,?,?) RETURNING exercise_id";
         Integer newId;
-        newId = jdbcTemplate.queryForObject(sql,
-                Integer.class, exercise.getExercise_name(),
-                exercise.getExercise_description(),
-                exercise.getSuggested_weight(),
-                exercise.getNum_of_reps(),
-                exercise.getDuration(),
-                exercise.getTarget_area());
-        exercise.setExercise_id(newId);
-        return exercise;
+        try{
+            newId = jdbcTemplate.queryForObject(sql,
+                    Integer.class, exercise.getExercise_name(), exercise.getExercise_description(), exercise.getSuggested_weight(), exercise.getNum_of_reps(), exercise.getDuration(), exercise.getTarget_area());
+            exercise.setExercise_id(newId);
+        }catch (DataAccessException e){
+            return false;
+        }
+        return true;
     }
+
+//    @Override
+//    public Exercise createExercise(Exercise exercise) {
+//        String sql = "insert into exercise(exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES (?,?,?,?,?,?) RETURNING exercise_id";
+//        Integer newId;
+//        newId = jdbcTemplate.queryForObject(sql,
+//                Integer.class, exercise.getExercise_name(),
+//                exercise.getExercise_description(),
+//                exercise.getSuggested_weight(),
+//                exercise.getNum_of_reps(),
+//                exercise.getDuration(),
+//                exercise.getTarget_area());
+//        exercise.setExercise_id(newId);
+//        return exercise;
+//    }
 
     @Override
     public Exercise updateExercise(Exercise exercise, int id) {

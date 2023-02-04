@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     
-    <!-- <my-workouts /> -->
-    <!-- <update-form/> -->
+    <my-workouts />
+    
     
    
     
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-// import MyWorkouts from '../components/MyWorkouts.vue';
-// import UpdateForm from '../components/UpdateForm.vue';
+import MyWorkouts from '../components/MyWorkouts.vue';
+
 
 export default {
   name: "Home",
   components: {
-    // MyWorkouts,
-    // UpdateForm
+    MyWorkouts,
+   
     
   },
 };

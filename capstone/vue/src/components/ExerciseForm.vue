@@ -74,6 +74,7 @@
             id="target-area"
             v-model="exercise.target_area"
           >
+            <option>Select an exercise</option>
             <option>Biceps</option>
             <option>Triceps</option>
             <option>Chest</option>
@@ -121,7 +122,7 @@ export default {
         if (response.status === 200) {
           // using the ADD_EXERCISE mutator updates the state when adding a new exercise
           // new exercise is available to view on the page without a refresh
-          
+
           this.$store.commit("ADD_EXERCISE", response.data);
           this.exercise = {};
           // this.$router.push({ name: "Exercise" });
@@ -155,7 +156,6 @@ export default {
   margin-left: auto;
   margin-right: auto;
   text-align: ce;
-  
 }
 
 .show-form-btn {
@@ -163,26 +163,23 @@ export default {
   min-width: 300px;
   max-width: 400px;
   width: 100;
-
 }
 
 .add-exercise-btn {
-  background-color: rgb(182, 182, 182);
-  border-color: rgb(173, 173, 173);
   width: 100%;
-  margin-top: 30px;
- 
-}
-
-.add-exercise-btn:hover {
-  background-color: rgb(128, 128, 128);
-  border-color: rgb(100, 100, 100);
+  margin-top: 10px;
 }
 
 .cancel-btn {
+  background-color: rgb(182, 182, 182);
+  border-color: rgb(173, 173, 173);
   width: 100%;
-  margin-top: 10px;
-  margin-bottom: 40px;
- 
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: rgb(128, 128, 128);
+  border-color: rgb(100, 100, 100);
 }
 </style>

@@ -4,8 +4,30 @@
       <!-- the col classes below are built in to the bootstrap grid layout. the grid has 12 columbns; 'col-md-3' refers to sections viewed on a 
         medium size display and the number 3 is how many columns each section will use. 4 columns will display when 'col-md-3'. 3 columns for 'col-sm-4 on small screens
         and 1 column for col-12 for the smallest size screen  -->
+      <div class="target-filter">
+        <label for="target-area">Filter by: </label>
+        <select
+          required
+          class="form-select selectpicker"
+          id="target-area"
+          @change="this.filterExercises"
+        >
+          <option selected value="">All</option>
+
+          <option
+            v-for="exercise in this.$store.state.exercises"
+            :key="exercise.exercise_id"
+            :value="exercise.target_area"
+          >
+            {{ exercise.target_area }}
+          </option>
+
+         
+        </select>
+      </div>
+
       <div
-        v-for="exercise in this.$store.state.exercises"
+        v-for="exercise in this.exercises"
         :key="exercise.exercise_id"
         class="col-12 col-sm-6 col-md-4 col-lg-3"
       >
@@ -24,7 +46,7 @@
             Suggested Weight: {{ exercise.suggested_weight }}lbs.
           </p>
           <p class="card-details">Number of Reps: {{ exercise.num_of_reps }}</p>
-          <p class="card-details">Duration: {{ exercise.duration }}min.</p>
+          <p class="card-details">Duration: {{ exercise.duration }} minutes</p>
           <p class="card-details">Target Area: {{ exercise.target_area }}</p>
           <div class="text-center">
             <button
@@ -50,6 +72,7 @@ export default {
     service.getExercises().then((response) => {
       if (response.status === 200) {
         this.$store.state.exercises = response.data;
+        this.exercises = response.data;
       }
     });
   },
@@ -57,6 +80,7 @@ export default {
   data() {
     return {
       exercise: {},
+      exercises: [],
     };
   },
   methods: {
@@ -76,11 +100,19 @@ export default {
         .catch((err) => console.log(err));
     },
     isTrainer,
-
     updateExercise(id) {
       this.$router.push({ path: `/edit/${id}` });
     },
+    filterExercises(event) {
+      const type = event.target.value;
+      console.log(type);
+      this.exercises = this.$store.state.exercises.filter((e) => {
+        return e.target_area.includes(type);
+      });
+    },
   },
+
+  
 };
 </script>
 
@@ -125,14 +157,11 @@ export default {
   right: 0px;
   border: none;
   background-color: transparent;
-
 }
 
 .edit-btn:hover {
   color: rgb(219, 68, 55);
 }
-  
-
 
 .card-details {
   margin-bottom: 1px;
@@ -143,6 +172,4 @@ export default {
   font-style: oblique;
   font-weight: bold;
 }
-
-
 </style>

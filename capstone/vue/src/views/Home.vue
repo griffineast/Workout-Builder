@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     
-    <my-workouts />
+    <!-- <my-workouts/> -->
+    <workout-cards/>
+    <create-workout/>
+
     
     
    
@@ -10,13 +13,17 @@
 </template>
 
 <script>
-import MyWorkouts from '../components/MyWorkouts.vue';
+import CreateWorkout from '../components/CreateWorkout.vue';
+// import MyWorkouts from '../components/MyWorkouts.vue';
+import WorkoutCards from '../components/WorkoutCards.vue';
 
 
 export default {
   name: "Home",
   components: {
-    MyWorkouts,
+    // MyWorkouts,
+    WorkoutCards,
+    CreateWorkout,
    
     
   },
@@ -27,12 +34,6 @@ export default {
 
 <style scoped>
 
-.home {
-  text-align: center;
-}
 
-a {
-  text-decoration: none;
-}
 
 </style>

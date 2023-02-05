@@ -34,7 +34,7 @@ public class WorkoutController {
         return workout;
     }
 
-    @RequestMapping(path = "/workout/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/workout/edit/{id}", method = RequestMethod.PUT)
     public Workout updateWorkout(@RequestBody Workout workout, @PathVariable int id) {
         Workout updatedWorkout = workoutDao.updateWorkout(workout, id);
         if (updatedWorkout == null) {
@@ -45,7 +45,7 @@ public class WorkoutController {
         }
     }
 
-    @RequestMapping(path = "/workout/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/workout/delete/{id}", method = RequestMethod.DELETE)
     public void deleteWorkout(@PathVariable int id) {
         Workout workoutToDelete = workoutDao.getWorkoutById(id);
         if (workoutToDelete == null) {

@@ -9,7 +9,7 @@
 
 <script>
 import ExerciseCards from '../components/ExerciseCards.vue'
-import ExerciseForm from '../components/ExerciseForm.vue'
+import ExerciseForm from '../components/CreateExercise.vue'
 import TrainerHero from '../components/TrainerHero.vue'
 export default {
   components: { TrainerHero, ExerciseForm, ExerciseCards },

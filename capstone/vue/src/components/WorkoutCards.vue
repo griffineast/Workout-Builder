@@ -1,65 +1,46 @@
 <template>
-  <div class="exercise-cards">
+  <div class="workout-cards">
     <div class="row">
-      <!-- Drop down menu to filter displayed exercises -->
-      <div class="target-filter">
-        <label for="target-area">Filter by: </label>
-        <select
-          required
-          class="form-select selectpicker"
-          id="target-area"
-          @change="this.filterExercises"
-        >
-          <option selected value="">All</option>
-
-          <option
-            v-for="exercise in this.$store.state.exercises"
-            :key="exercise.exercise_id"
-            :value="exercise.target_area"
-          >
-            {{ exercise.target_area }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Creates a card for each excercise in the DB -->
+      <!-- Creates a card for each workout in the DB -->
       <div
-        v-for="exercise in this.exercises"
-        :key="exercise.exercise_id"
+        v-for="workout in this.workouts"
+        :key="workout.workout_id"
         class="col-12 col-sm-6 col-md-4 col-lg-3"
       >
         <!-- Card Container -->
-        <div class="exercises shadow-sm">
+        <div class="workouts shadow-sm">
           <!-- Card Details -->
-          <h4 class="card-title">{{ exercise.exercise_name }}</h4>
-          <p>{{ exercise.exercise_description }}</p>
-          <div class="card-details">
-            <p>Suggested Weight: {{ exercise.suggested_weight }}lbs.</p>
-            <p>Number of Reps: {{ exercise.num_of_reps }}</p>
-            <p>Duration: {{ exercise.duration }} minutes</p>
-            <p>Target Area: {{ exercise.target_area }}</p>
-          </div>
+          <h4 class="card-title">{{ workout.workout_name }}</h4>
 
+          <!-- TODO: loop through exercsises for the workout -->
+          <div class="card-details">
+            <p>Exercise: {{ workout.exercise }}</p>
+          </div>
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
-            <!-- Add to workout button -->
-            <button class="btn btn-primary add-btn">
+            <!-- Add new exercise to workout button -->
+            <button
+              @click="addExerciseToWorkout(workout.workout_id)"
+              class="btn btn-primary add-btn"
+            >
               <i class="bi bi-plus-square"></i>
             </button>
 
+            <!-- TODO: Create updateWorkout method -->
             <!-- Edit button -->
             <button
               v-if="isTrainer()"
-              @click="updateExercise(exercise.exercise_id)"
+              @click="updateWorkout(workout.workout_id)"
               class="btn btn-primary edit-btn"
             >
               <i class="bi bi-pencil"></i>
             </button>
 
+            <!-- TODO: Create deleteWorkout method -->
             <!-- Delete button -->
             <button
-              v-if="isTrainer()"
-              @click="deleteExercise(exercise.exercise_id)"
+             v-if="isTrainer()"
+              @click="deleteWorkout(workout.workout_id)"
               class="delete-btn btn"
             >
               <i class="bi bi-trash3"></i>
@@ -72,23 +53,23 @@
 </template>
 
 <script>
-import service from "../services/ExerciseService.js";
+import service from "../services/WorkoutService.js";
 import { isTrainer } from "../util/util.js";
 export default {
-  // displays the list of exercises when page is loaded
+  // displays the list of workouts when page is loaded
   created() {
-    service.getExercises().then((response) => {
+    service.getWorkouts().then((response) => {
       if (response.status === 200) {
-        this.$store.state.exercises = response.data;
-        this.exercises = response.data;
+        this.$store.state.workouts = response.data;
+        this.workouts = response.data;
       }
     });
   },
 
   data() {
     return {
-      exercise: {},
-      exercises: [],
+      workout: {},
+      workouts: [],
     };
   },
   methods: {
@@ -124,13 +105,13 @@ export default {
 </script>
 
 <style scoped>
-.exercise-cards {
+.workout-cards {
   margin-bottom: 0px;
   margin-left: 50px;
   margin-right: 50px;
 }
 
-.exercises {
+.workouts {
   padding: 10px;
   background: rgb(248, 249, 250);
   margin: 10px 10px 10px 10px;
@@ -139,7 +120,7 @@ export default {
   position: relative;
 }
 
-.exercises:hover {
+.workouts:hover {
   transition: all 0.2s ease-in-out;
   transform: scale(1.05);
   margin-top: 10px;

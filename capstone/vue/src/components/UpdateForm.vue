@@ -136,9 +136,9 @@ export default {
     },
     updateExercise() {
       service
-        .editExercise(this.$route.params.id, this.currentExercise)
+        .editExercise( this.currentExercise, this.$route.params.id)
         .then(() => {
-          window.alert("Exercise updated.");
+          // window.alert("Exercise updated.");
           this.$router.push({ name: "Trainer" });
         })
         .catch((err) => {

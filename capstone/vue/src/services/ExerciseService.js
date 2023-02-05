@@ -1,24 +1,22 @@
 import axios from "axios";
 export default {
+  getExercises() {
+    return axios.get("/exercise");
+  },
 
-    addExercise(exercise) {
-        return axios.post('/exercise/add', exercise)
-    },
+  getExerciseById(id) {
+    return axios.get(`/exercise/${id}`);
+  },
 
-    getExercises() {
-        return axios.get('/exercise')
-    },
+  addExercise(exercise) {
+    return axios.post("/exercise/add", exercise);
+  },
 
-    getExerciseById(id) {
-        return axios.get(`/exercise/${id}`)
-    },
-    
-    deleteExercise(id) {
-        return axios.delete(`/exercise/delete/${id}`);
-    },
+  editExercise(exercise, id) {
+    return axios.put(`/exercise/edit/${id}`, exercise);
+  },
 
-    editExercise(id, exercise) {
-        return axios.put(`/exercise/edit/${id}`, exercise);
-    }
-
-}
+  deleteExercise(id) {
+    return axios.delete(`/exercise/delete/${id}`);
+  },
+};

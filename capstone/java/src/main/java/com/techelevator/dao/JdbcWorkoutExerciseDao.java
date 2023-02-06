@@ -29,16 +29,15 @@ public class JdbcWorkoutExerciseDao implements WorkoutExerciseDao {
     }
 
     @Override
-    public List<WorkoutExercise> allWorkoutExercises() {
-        List<WorkoutExercise> workoutExercises = new ArrayList<>();
-        String sql = "SELECT * FROM workout_exercise";
+    public List<String> allWorkouts() {
+        List<String> workouts = new ArrayList<>();
+        String sql = "SELECT DISTINCT workout_name FROM workout_exercise";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            WorkoutExercise workoutExercise = mapRowToWorkout(results);
-            workoutExercises.add(workoutExercise);
+            workouts.add(results.getString("workout_name"));
         }
-        return workoutExercises;
+        return workouts;
     }
 
     @Override
@@ -83,7 +82,7 @@ public class JdbcWorkoutExerciseDao implements WorkoutExerciseDao {
 
     @Override
     public void deleteWorkoutExercise(int id) {
-        String sql = "DELETE FROM workout_exercise WHERE workout_id = ?";
+        String sql = "DELETE FROM workout_exercise WHERE workout_exercise_id = ?";
         try {
             jdbcTemplate.update(sql, id);
         } catch (DataAccessException e){

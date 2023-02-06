@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface WorkoutExerciseDao {
-    List<WorkoutExercise> allWorkoutExercises();
+    List<String> allWorkouts();
 
     WorkoutExercise getWorkoutExerciseById(int workout_exercise_id);
 

@@ -22,8 +22,8 @@ public class WorkoutController {
     ExerciseDao exerciseDao;
 
     @RequestMapping(path = "/workout", method = RequestMethod.GET)
-    public List<WorkoutExercise> listWorkoutExercises() {
-        return workoutDao.allWorkoutExercises();
+    public List<String> listWorkouts() {
+        return workoutDao.allWorkouts();
     }
 
     @RequestMapping(path = "/workout/add", method = RequestMethod.POST)

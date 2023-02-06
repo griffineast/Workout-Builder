@@ -45,6 +45,7 @@ CREATE TABLE trainer (
 );
 
 CREATE TABLE user_trainer (
+    assignment_id SERIAL,
     user_id int,
     trainer_id int
 );

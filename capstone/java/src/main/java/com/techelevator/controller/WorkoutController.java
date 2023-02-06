@@ -18,11 +18,12 @@ public class WorkoutController {
 
     @Autowired
     WorkoutExerciseDao workoutDao;
+    @Autowired
     ExerciseDao exerciseDao;
 
     @RequestMapping(path = "/workout", method = RequestMethod.GET)
-    public List<WorkoutExercise> listWorkoutExercises() {
-        return workoutDao.allWorkoutExercises();
+    public List<String> listWorkouts() {
+        return workoutDao.allWorkouts();
     }
 
     @RequestMapping(path = "/workout/add", method = RequestMethod.POST)
@@ -54,7 +55,7 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
-    public ArrayList<String> getWorkoutExercisesID(@PathVariable String name) {
+    public ArrayList<String> getWorkoutExercises(@PathVariable String name) {
         ArrayList<Integer> exercises = workoutDao.getWorkoutExercises(name);
         ArrayList<String> exercisesNames = new ArrayList<>();
         for (int i = 0; i < exercises.size(); i++) {

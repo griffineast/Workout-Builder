@@ -10,12 +10,18 @@
         <!-- Card Container -->
         <div class="workouts shadow-sm">
           <!-- Card Details -->
-          <h4 class="card-title">{{ workout.workout_name }}</h4>
+          <h4 class="card-title">{{ workout.name }}</h4>
 
           <!-- TODO: loop through exercsises for the workout -->
-          <div class="card-details">
+          <div 
+          v-for="exercise in this.workout"
+          :key="exercise"
+          class="workout-exercises"
+          >
             <p>Exercise: {{ workout.exercise }}</p>
           </div>
+
+
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
             <!-- Add new exercise to workout button -->
@@ -29,7 +35,6 @@
             <!-- TODO: Create updateWorkout method -->
             <!-- Edit button -->
             <button
-              v-if="isTrainer()"
               @click="updateWorkout(workout.workout_id)"
               class="btn btn-primary edit-btn"
             >
@@ -39,7 +44,6 @@
             <!-- TODO: Create deleteWorkout method -->
             <!-- Delete button -->
             <button
-              v-if="isTrainer()"
               @click="deleteWorkout(workout.workout_id)"
               class="delete-btn btn"
             >
@@ -67,7 +71,7 @@ export default {
 
     });
 
-    // const name = this.workout.workout_name
+    // const name = this.$route.params.name;
     // service.getWorkoutExercises(name).then((response) => {
     //   if (response.status === 200) {
     //     this.$store.state.workouts = response.data;
@@ -80,6 +84,7 @@ export default {
   data() {
     return {
       workout: {},
+      workoutName: '',
       workouts: [],
     };
   },

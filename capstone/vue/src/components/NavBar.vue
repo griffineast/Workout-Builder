@@ -18,14 +18,13 @@
           </router-link>
 
           <router-link
-            class="home-btn nav-item nav-link active"
+            class="home-btn nav-item nav-link active "
             v-bind:to="{ name: 'Exercise' }"
             v-if="$store.state.token != ''"
             >Exercises</router-link
           >
 
            <router-link
-           
             class="home-btn nav-item nav-link active"
             v-bind:to="{ name: 'Trainer' }"
             v-if="$store.state.token != '' && isTrainer()"

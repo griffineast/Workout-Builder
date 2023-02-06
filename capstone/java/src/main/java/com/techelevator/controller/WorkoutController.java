@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.ExerciseDao;
 import com.techelevator.dao.WorkoutExerciseDao;
 import com.techelevator.model.Exercise;
+import com.techelevator.model.Workout;
 import com.techelevator.model.WorkoutExercise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class WorkoutController {
     ExerciseDao exerciseDao;
 
     @RequestMapping(path = "/workout", method = RequestMethod.GET)
-    public List<String> listWorkouts() {
+    public ArrayList<Workout> listWorkouts() {
         return workoutDao.allWorkouts();
     }
 
@@ -54,16 +55,16 @@ public class WorkoutController {
         }
     }
 
-    @RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
-    public ArrayList<String> getWorkoutExercises(@PathVariable String name) {
-        ArrayList<Integer> exercises = workoutDao.getWorkoutExercises(name);
-        ArrayList<String> exercisesNames = new ArrayList<>();
-        for (int i = 0; i < exercises.size(); i++) {
-            Exercise exercise = exerciseDao.getExerciseById(exercises.get(i));
-            exercisesNames.add(exercise.getExercise_name());
-        }
-        return exercisesNames;
-    }
+    //@RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
+    //public ArrayList<String> getWorkoutExercises(@PathVariable String name) {
+        //ArrayList<Integer> exercises = workoutDao.getWorkoutExercises(name);
+        //ArrayList<String> exercisesNames = new ArrayList<>();
+        //for (int i = 0; i < exercises.size(); i++) {
+            //Exercise exercise = exerciseDao.getExerciseById(exercises.get(i));
+            //exercisesNames.add(exercise.getExercise_name());
+        //}
+        //return exercisesNames;
+    //}
 
     //@RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
     //public ArrayList<Integer> getWorkoutExercisesID(@PathVariable String name) {

@@ -6,6 +6,7 @@
 
 <script>
 import AddExercise from "../components/AddExercise.vue";
+
 export default {
   name: "Exercise",
   components: {
@@ -13,5 +14,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

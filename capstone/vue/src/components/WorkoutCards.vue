@@ -39,7 +39,7 @@
             <!-- TODO: Create deleteWorkout method -->
             <!-- Delete button -->
             <button
-             v-if="isTrainer()"
+              v-if="isTrainer()"
               @click="deleteWorkout(workout.workout_id)"
               class="delete-btn btn"
             >
@@ -58,12 +58,23 @@ import { isTrainer } from "../util/util.js";
 export default {
   // displays the list of workouts when page is loaded
   created() {
+
     service.getWorkouts().then((response) => {
       if (response.status === 200) {
         this.$store.state.workouts = response.data;
         this.workouts = response.data;
       }
+
     });
+
+    // const name = this.workout.workout_name
+    // service.getWorkoutExercises(name).then((response) => {
+    //   if (response.status === 200) {
+    //     this.$store.state.workouts = response.data;
+    //     this.workouts = response.data;
+    //   }
+
+    // });
   },
 
   data() {
@@ -73,33 +84,9 @@ export default {
     };
   },
   methods: {
-    deleteExercise(id) {
-      if (
-        !window.confirm("Are you sure you would like to delete this exercise?")
-      )
-        return;
-      service
-        .deleteExercise(id)
-        .then((response) => {
-          if (response.status !== 200) {
-            return;
-          }
-          this.$store.commit("DELETE_EXERCISE", id);
-        })
-        .catch((err) => console.log(err));
-    },
     isTrainer,
-    updateExercise(id) {
-      this.$router.push({ path: `/edit/${id}` });
-    },
-    filterExercises(event) {
-      //drop down option value for selected target area
-      const target = event.target.value;
-      // console.log(target);
-      this.exercises = this.$store.state.exercises.filter((exercise) => {
-        return exercise.target_area.includes(target);
-      });
-    },
+
+    
   },
 };
 </script>

@@ -1,7 +1,7 @@
 import axios from "axios";
 export default {
   getExercises() {
-    return axios.get("/exercise");
+    return axios.get(`/exercise`);
   },
 
   getExerciseById(id) {
@@ -9,7 +9,7 @@ export default {
   },
 
   addExercise(exercise) {
-    return axios.post("/exercise/add", exercise);
+    return axios.post(`/exercise/add`, exercise);
   },
 
   editExercise(exercise, id) {

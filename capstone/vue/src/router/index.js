@@ -91,6 +91,8 @@ const router = new Router({
         requiresAuth: true,
         title: "Update Exercise",
       },
+
+      
     },
   ],
 });

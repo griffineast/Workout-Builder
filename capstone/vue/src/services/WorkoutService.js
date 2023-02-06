@@ -1,15 +1,18 @@
 import axios from "axios";
 export default {
+  
+
+  
   getWorkoutExercises(name) {
-    return axios.get(`/workout/exercises/${name}`);
+    return axios.get(`/workout/${name}`);
   },
 
   getWorkouts() {
-    return axios.get("/workout");
+    return axios.get(`/workout`);
   },
 
   addWorkout(workout) {
-    return axios.post("/workout/add", workout);
+    return axios.post(`/workout/add`, workout);
   },
 
   updateWorkout(workout, id) {
@@ -19,4 +22,5 @@ export default {
   deleteWorkout(id) {
     return axios.delete(`/workout/delete/${id}`);
   },
+  
 };

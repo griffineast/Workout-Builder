@@ -47,6 +47,9 @@ export default new Vuex.Store({
       const index = state.exercises.findIndex(e => e.exercise_id === id);
       if(index > -1) state.exercises.splice(index, 1);
     },
+    ADD_WORKOUT(state, workout) {
+      state.workouts.push(workout);
+    }
    
   }
 })

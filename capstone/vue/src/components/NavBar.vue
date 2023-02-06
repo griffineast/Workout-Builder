@@ -24,6 +24,14 @@
             >Exercises</router-link
           >
 
+           <router-link
+           
+            class="home-btn nav-item nav-link active"
+            v-bind:to="{ name: 'Trainer' }"
+            v-if="$store.state.token != '' && isTrainer()"
+            >Trainer</router-link
+          >
+
           <router-link
             class="logout nav-item nav-link active"
             v-bind:to="{ name: 'logout' }"
@@ -37,7 +45,14 @@
 </template>
 
 <script>
-export default {};
+import { isTrainer } from "../util/util.js";
+export default {
+
+  methods: {
+    isTrainer
+  }
+
+};
 </script>
 
 <style>

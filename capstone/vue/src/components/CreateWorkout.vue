@@ -8,6 +8,14 @@
     >
       {{this.btnText}}
     </button>
+
+    <button
+      class="btn btn-primary new-workout-btn shadow-sm"
+      @click="newWorkout"
+    >
+      {{this.btnText}}
+    </button>
+
     </div>
 
     <!-- Display all exercises. Implement button on exercise cards 
@@ -19,7 +27,7 @@
 </template>
 
 <script>
-// import service from "../services/ExerciseService.js";
+import service from "../services/WorkoutService.js";
 import ExerciseCards from "../components/ExerciseCards.vue";
 
 export default {
@@ -28,11 +36,20 @@ export default {
   },
   data() {
     return {
+      workout: {},
       expanded: false,
       btnText: "View Exercises",
     };
   },
   methods: {
+    newWorkout(){
+      service.addWorkout(this.workout).then((response) =>{
+          if(response.status === 200) {
+            this.$store.commit("ADD_WORKOUT", response.data);
+            this.workout = {};
+          }
+      });
+    },
     toggleView() {
       this.expanded = !this.expanded;
 

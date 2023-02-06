@@ -20,7 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    exercises: []
+    exercises: [],
+    workouts: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +42,11 @@ export default new Vuex.Store({
     },
     ADD_EXERCISE(state, exercise) {
       state.exercises.push(exercise);
-    }
+    },
+    DELETE_EXERCISE(state, id) {
+      const index = state.exercises.findIndex(e => e.exercise_id === id);
+      if(index > -1) state.exercises.splice(index, 1);
+    },
+   
   }
 })

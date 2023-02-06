@@ -49,13 +49,13 @@ CREATE TABLE user_trainer (
     trainer_id int
 );
 
-CREATE TABLE workout (
-    workout_id SERIAL,
+CREATE TABLE workout_exercise (
+    workout_exercise_id SERIAL,
     workout_name varchar(50),
     user_id int,
     exercise int,
 
-    CONSTRAINT PK_workout PRIMARY KEY (workout_id)
+    CONSTRAINT PK_workout_exercise PRIMARY KEY (workout_exercise_id)
 );
 
 COMMIT TRANSACTION;

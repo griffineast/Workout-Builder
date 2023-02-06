@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Exercise;
 import com.techelevator.model.WorkoutStats;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface WorkoutStatsDao {
@@ -10,6 +12,8 @@ public interface WorkoutStatsDao {
 
     WorkoutStats getWorkoutStatsById(int workoutId);
 
-    boolean createWorkoutStat(WorkoutStats workout);
+    WorkoutStats createWorkoutStats(int user_id, String date, int exercise_id);
+
+    int[] getWorkoutStatsForUser(int id, String date);
 
 }

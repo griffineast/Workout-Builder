@@ -1,19 +1,17 @@
 package com.techelevator.model;
 
-import java.util.ArrayList;
-
-public class Workout {
-    private int workout_id;
+public class WorkoutExercise {
+    private int workout_exercise_id;
     private String workout_name;
     private int user_id;
     private int exercise;
 
-    public Workout() {
+    public WorkoutExercise() {
 
     }
 
-    public Workout(int workout_id, String workout_name, int user_id, int exercise) {
-        this.workout_id = workout_id;
+    public WorkoutExercise(int workout_exercise_id, String workout_name, int user_id, int exercise) {
+        this.workout_exercise_id = workout_exercise_id;
         this.workout_name = workout_name;
         this.user_id = user_id;
         this.exercise = exercise;
@@ -35,12 +33,12 @@ public class Workout {
         this.user_id = user_id;
     }
 
-    public int getWorkout_id() {
-        return workout_id;
+    public int getWorkout_exercise_id() {
+        return workout_exercise_id;
     }
 
-    public void setWorkout_id(int workout_id) {
-        this.workout_id = workout_id;
+    public void setWorkout_exercise_id(int workout_id) {
+        this.workout_exercise_id = workout_id;
     }
 
     public int getExercise() {

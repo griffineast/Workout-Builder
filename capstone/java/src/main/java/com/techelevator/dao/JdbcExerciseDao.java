@@ -57,9 +57,22 @@ public class JdbcExerciseDao implements ExerciseDao {
             return false;
         }
         return true;
-//        String password_hash = new BCryptPasswordEncoder().encode(password);
-//        String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
     }
+
+//    @Override
+//    public Exercise createExercise(Exercise exercise) {
+//        String sql = "insert into exercise(exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES (?,?,?,?,?,?) RETURNING exercise_id";
+//        Integer newId;
+//        newId = jdbcTemplate.queryForObject(sql,
+//                Integer.class, exercise.getExercise_name(),
+//                exercise.getExercise_description(),
+//                exercise.getSuggested_weight(),
+//                exercise.getNum_of_reps(),
+//                exercise.getDuration(),
+//                exercise.getTarget_area());
+//        exercise.setExercise_id(newId);
+//        return exercise;
+//    }
 
     @Override
     public Exercise updateExercise(Exercise exercise, int id) {

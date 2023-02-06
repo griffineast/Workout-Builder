@@ -20,13 +20,19 @@ public class ExerciseController {
         return exerciseDao.allExercises();
     }
 
+    @RequestMapping(path = "/exercise/{id}", method = RequestMethod.GET)
+    public Exercise getExerciseById(@PathVariable int id) {
+       return exerciseDao.getExerciseById(id);
+    }
+
     @RequestMapping(path = "/exercise/add", method = RequestMethod.POST)
     public Exercise addNewExercise(@RequestBody Exercise exercise) {
         exerciseDao.createExercise(exercise);
         return exercise;
+//        return exerciseDao.createExercise(exercise);
     }
 
-    @RequestMapping(path = "/exercise/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/exercise/edit/{id}", method = RequestMethod.PUT)
     public Exercise updateExercise(@RequestBody Exercise exercise, @PathVariable int id) {
         Exercise updatedExercise = exerciseDao.updateExercise(exercise, id);
         if (updatedExercise == null) {
@@ -37,7 +43,7 @@ public class ExerciseController {
         }
     }
 
-    @RequestMapping(path = "/exercise/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/exercise/delete/{id}", method = RequestMethod.DELETE)
     public void deleteExercise(@PathVariable int id) {
         Exercise exerciseToDelete = exerciseDao.getExerciseById(id);
         if (exerciseToDelete == null) {

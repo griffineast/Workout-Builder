@@ -1,21 +1,39 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-    <go-to-exercise/>
-     <router-link v-bind:to="{name:'Exercise'}">
-          add exercise 
-      </router-link>
+    
+    <!-- <my-workouts/> -->
+    <workout-cards/>
+    <create-workout/>
+
+    
+    
+   
+    
   </div>
 </template>
 
 <script>
-import GoToExercise from '../components/GoToExercise.vue';
+import CreateWorkout from '../components/CreateWorkout.vue';
+// import MyWorkouts from '../components/MyWorkouts.vue';
+import WorkoutCards from '../components/WorkoutCards.vue';
+
+
 export default {
   name: "Home",
   components: {
-    GoToExercise
-  }
-}
+    // MyWorkouts,
+    WorkoutCards,
+    CreateWorkout,
+   
+    
+  },
+};
+
 
 </script>
+
+<style scoped>
+
+
+
+</style>

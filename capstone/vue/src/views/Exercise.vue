@@ -6,6 +6,7 @@
 </template>
 
 <script>
+// import AddExercise from "../components/AddExercise.vue";
 import ExerciseCards from '../components/ExerciseCards.vue';
 import CreateExercise from '../components/CreateExercise.vue'
 
@@ -20,5 +21,3 @@ export default {
    
 };
 </script>
-
-<style></style>

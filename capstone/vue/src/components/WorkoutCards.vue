@@ -13,12 +13,10 @@
           <h4 class="card-title">{{ workout.name }}</h4>
 
           <!-- TODO: loop through exercsises for the workout -->
-          <div 
-          v-for="exercise in this.workout"
-          :key="exercise"
-          class="workout-exercises"
-          >
-            <p>Exercise: {{ workout.exercise }}</p>
+
+          <div class="card-details">
+            <p>Exercise: {{ workout.exercises[0].exercise_name }}</p>
+
           </div>
 
 

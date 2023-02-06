@@ -1,3 +1,9 @@
+
+body {
+  overflow-x: none;
+}
+
+
 .form-control:focus {
   border-color: rgba(173, 173, 173, 0.25);
   box-shadow: 0 0 0 0.2rem rgba(209, 209, 209, 0.25);

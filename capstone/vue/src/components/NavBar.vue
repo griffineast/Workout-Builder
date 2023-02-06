@@ -1,9 +1,11 @@
 <template>
   <div class="nav-bar">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3" id="navbar">
+    <nav
+      class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3"
+      id="navbar"
+    >
       <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">
-        <img src="/img/logo.png" width="50" height="50" alt="" />
-        Workout Builder
+        <img src="/img/elevate-health-logo.png"  height="50" alt="" />
       </router-link>
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -56,18 +58,9 @@ export default {};
   font-size: 20px;
 }
 
-/* .nav-link:hover {
-  color: red !important;
-  transition: all 0.2s ease-in-out;
-  transform: scale(1.1);
-} */
-
 .nav-link {
   position: relative;
   color: rgb(143, 143, 143) !important;
-}
-
-.nav-link:hover {
 }
 
 .nav-link::before {

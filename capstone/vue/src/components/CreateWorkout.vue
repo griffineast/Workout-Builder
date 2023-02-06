@@ -39,7 +39,7 @@ export default {
       if (this.expanded) {
         this.btnText = "Hide Exercises";
       } else {
-        this.btnText = "View Exercises";
+        this.btnText = "View Exercises"; 
       }
     },
   },

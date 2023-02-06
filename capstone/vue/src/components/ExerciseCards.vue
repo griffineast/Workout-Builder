@@ -13,11 +13,11 @@
           <option selected value="">All</option>
 
           <option
-            v-for="exercise in this.$store.state.exercises"
-            :key="exercise.exercise_id"
-            :value="exercise.target_area"
+            v-for="exercise in this.filters"
+            :key="exercise"
+            :value="exercise"
           >
-            {{ exercise.target_area }}
+            {{ exercise }}
           </option>
         </select>
       </div>
@@ -29,14 +29,14 @@
         class="col-12 col-sm-6 col-md-4 col-lg-3"
       >
         <!-- Card Container -->
-        <div class="exercises shadow-sm">
+        <div id="exercise-card" class="exercises shadow-sm">
           <!-- Card Details -->
           <h4 class="card-title">{{ exercise.exercise_name }}</h4>
           <p>{{ exercise.exercise_description }}</p>
           <div class="card-details">
             <p>Suggested Weight: {{ exercise.suggested_weight }}lbs.</p>
             <p>Number of Reps: {{ exercise.num_of_reps }}</p>
-            <p>Duration: {{ exercise.duration }} minutes</p>
+            <p>Duration: {{ exercise.duration }}min.</p>
             <p>Target Area: {{ exercise.target_area }}</p>
           </div>
 
@@ -81,6 +81,11 @@ export default {
       if (response.status === 200) {
         this.$store.state.exercises = response.data;
         this.exercises = response.data;
+        const targetAreas = this.exercises.map((exercise) => {
+          return exercise.target_area
+        });
+    // filters out any duplicate target areas in the array
+        this.filters = [...new Set(targetAreas)]
       }
     });
   },
@@ -89,6 +94,7 @@ export default {
     return {
       exercise: {},
       exercises: [],
+      filters: []
     };
   },
   methods: {
@@ -114,7 +120,6 @@ export default {
     filterExercises(event) {
       //drop down option value for selected target area
       const target = event.target.value;
-      // console.log(target);
       this.exercises = this.$store.state.exercises.filter((exercise) => {
         return exercise.target_area.includes(target);
       });

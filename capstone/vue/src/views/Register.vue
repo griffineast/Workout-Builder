@@ -4,10 +4,18 @@
       <div class="welcome-container text-center">
         <div class="welcome-info text-start">
           <div class="title-container">
+           <h1 class="text-light title">
+              Elevate
+            </h1>
+
             <h1 class="text-light title">
-              Elevate<br />
+              Your
+            </h1>
+
+            <h1 class="text-light title">
               Health
             </h1>
+
 
             <h2 class="text-light fw-lighter">
               The quickest ride <br />
@@ -118,7 +126,7 @@ export default {
 <style scoped>
 .form-register {
   width: 300px;
-  margin: 17% auto;
+  margin: 17% auto 0px auto;
 }
 
 .logout-btn {
@@ -145,6 +153,6 @@ export default {
 .title {
   font-size: 100px;
   font-weight: bold;
-  margin: 0px;
+  margin-top: -40px;
 }
 </style>

@@ -6,7 +6,14 @@
         <div class="welcome-info text-start">
           <div class="title-container">
             <h1 class="text-light title">
-              Elevate<br />
+              Elevate
+            </h1>
+
+            <h1 class="text-light title">
+              Your
+            </h1>
+
+            <h1 class="text-light title">
               Health
             </h1>
 
@@ -110,7 +117,7 @@ export default {
 <style scoped>
 .form-signin {
   width: 300px;
-  margin: 17% auto;
+  margin: 17% auto 0px auto;
 }
 
 .login-btn {
@@ -138,6 +145,6 @@ export default {
 .title {
   font-size: 100px;
   font-weight: bold;
-  margin: 0px;
+  margin-top: -40px;
 }
 </style>

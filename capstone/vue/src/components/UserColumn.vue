@@ -9,7 +9,6 @@
     <div class="col-6">
     <div class="text-center">
     <h1>What would you like to hit today?</h1>
-<<<<<<< HEAD
             <button class="btn btn-primary mx-2">Legs</button>
             <button class="btn btn-primary mx-2">Shoulders</button>
             <button class="btn btn-primary mx-2">Arms</button>
@@ -17,14 +16,13 @@
             <button class="btn btn-primary mx-2">Cardio</button>
             <button class="btn btn-primary mx-2">Abs</button>
             <button class="btn btn-primary mx-5">I'm Feeling Lucky!</button>
-=======
+
         <div class="target-btns">
             <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
                 {{btn.name}}
             </button>
         </div>
             <button class="btn btn-primary mx-5" :class="{active:isActive}" @click="isActive = !isActive">I'm Feeling Lucky!</button>
->>>>>>> main
             </div> 
             </div>
     <div class="mx-auto" style="width: 220px;">
@@ -43,8 +41,6 @@
 export default {
     data() {
         return{
-<<<<<<< HEAD
-=======
             isActive: false,
             buttons: [{name: 'Legs', active: false}, 
             {name: 'Shoulders', active: false}, 
@@ -65,7 +61,6 @@ export default {
             this.buttons.forEach(function(button) {
                 button.active = false;
             })
->>>>>>> main
         }
     }
 
@@ -85,9 +80,7 @@ export default {
     border-block: 10rem;
     margin: 10rem 6rem;
 }
-<<<<<<< HEAD
 
-=======
 .body{
     background-color: cornflowerblue;
 }
@@ -95,5 +88,4 @@ export default {
 .active {
     background-color:cyan;
 }
->>>>>>> main
 </style>

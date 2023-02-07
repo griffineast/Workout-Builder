@@ -72,14 +72,6 @@ export default {
       }
     });
 
-    // const name = this.$route.params.name;
-    // service.getWorkoutExercises(name).then((response) => {
-    //   if (response.status === 200) {
-    //     this.$store.state.workouts = response.data;
-    //     this.workouts = response.data;
-    //   }
-
-    // });
   },
  
   data() {

@@ -4,6 +4,13 @@ INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULi
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
 
+
+
+
+INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area)
+VALUES ('Warm-Up', 'Begin your workout with a quick jog and stretch to warm-up and prepare your body for aerobic activities.'
+		, 0, 0, 5, 'Cardio');
+
 INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area)
 VALUES ('Pull-Up', 'Hang from a pull-up bar by your hands with your palms facing away from you, and lifting your entire body up with your arm and back muscles.', 150, 8, 5, 'Biceps');
 

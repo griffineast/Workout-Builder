@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
-import com.techelevator.model.WorkoutExercise;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -80,8 +79,7 @@ public class JdbcWorkoutExerciseDao implements WorkoutExerciseDao {
 
     @Override
     public boolean addExerciseToWorkout(Workout workout, int exercise_id) {
-        ArrayList<Exercise> exercises = workout.getExercises();
-        String sql = "insert into workout_exercise(workout_name, user_id, exercise) VALUES (?,?,?) RETURNING workout_exercise_id";
+        String sql = "insert into workout_exercise(workout_name, user_id, exercise) VALUES (?,?,?)";
         try{
             jdbcTemplate.queryForObject(sql, Integer.class, workout.getWorkout_name(), 1, exercise_id);
             return true;
@@ -91,50 +89,33 @@ public class JdbcWorkoutExerciseDao implements WorkoutExerciseDao {
     }
 
     @Override
-    public boolean createWorkoutExercise(WorkoutExercise workoutExercise) {
-        String sql = "insert into workout_exercise(workout_name, user_id, exercise) VALUES (?,?,?) RETURNING workout_exercise_id";
-        Integer newId;
-        try{
-            newId = jdbcTemplate.queryForObject(sql,
-                    Integer.class, workoutExercise.getWorkout_name(), workoutExercise.getUser_id(), workoutExercise.getExercise());
-            workoutExercise.setWorkout_exercise_id(newId);
-        }catch (DataAccessException e){
-            return false;
+    public void removeExerciseFromWorkout(Workout workout, int exercise_id) {
+        String sql = "DELETE FROM workout_exercise WHERE workout_name = ? AND exercise = ?";
+        try {
+            jdbcTemplate.update(sql, workout.getWorkout_name(), exercise_id);
+        } catch (DataAccessException e){
+            System.out.println("Failed to delete exercise with id: " + exercise_id + " from " + workout.getWorkout_name() + "!");
         }
-        return true;
     }
 
     @Override
-    public WorkoutExercise updateWorkoutExercise(WorkoutExercise workoutExercise, int id) {
+    public void createWorkout(String workout_name) {
+        String sql = "insert into workout_exercise(workout_name, user_id, exercise) VALUES (?,?,?)";
         try {
-            String sql = "UPDATE workout_exercise SET workout_name = ? WHERE workout_exercise_id = ?";
-            jdbcTemplate.update(sql, workoutExercise.getWorkout_name(), id);
-            sql = "UPDATE workout_exercise SET user_id = ? WHERE workout_exercise_id = ?";
-            jdbcTemplate.update(sql, workoutExercise.getUser_id(), id);
-            sql = "UPDATE workout_exercise SET exercise = ? WHERE workout_exercise_id = ?";
-            jdbcTemplate.update(sql, workoutExercise.getExercise(), id);
+            jdbcTemplate.queryForObject(sql, Integer.class, workout_name, 1, 1);
         } catch (DataAccessException e){
-            System.out.println("Failed to update workout " + id + "!");
+            System.out.println("Failed to create workout!");
         }
-        return workoutExercise;
     }
 
     @Override
-    public void deleteWorkoutExercise(int id) {
-        String sql = "DELETE FROM workout_exercise WHERE workout_exercise_id = ?";
+    public void deleteWorkout(String workout_name) {
+        String sql = "DELETE FROM workout_exercise WHERE workout_name = ?";
         try {
-            jdbcTemplate.update(sql, id);
+            jdbcTemplate.update(sql, workout_name);
         } catch (DataAccessException e){
-            System.out.println("Failed to delete workout " + id + "!");
+            System.out.println("Failed to delete " + workout_name + "!");
         }
     }
 
-    private WorkoutExercise mapRowToWorkout(SqlRowSet rs) {
-        WorkoutExercise workout = new WorkoutExercise();
-        workout.setWorkout_exercise_id(rs.getInt("workout_exercise_id"));
-        workout.setWorkout_name(rs.getString("workout_name"));
-        workout.setUser_id(rs.getInt("user_Id"));
-        workout.setExercise(rs.getInt("exercise"));
-        return workout;
-    }
 }

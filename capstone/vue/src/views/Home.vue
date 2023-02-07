@@ -1,42 +1,25 @@
 <template>
   <div class="home">
-   <!-- <display-exercises/> -->
-   <!-- <user-column/> -->
-    
-    
-    <workout-cards/>
-    <!-- <create-workout/> -->
+    <display-exercises />
+    <user-column />
 
-    
-    
-   
-    
+    <workout-cards />
   </div>
 </template>
 
 <script>
-// import UserColumn from '../components/UserColumn.vue';
-// import CreateWorkout from '../components/CreateWorkout.vue';
-import WorkoutCards from '../components/WorkoutCards.vue';
-
+import UserColumn from "../components/UserColumn.vue";
+import WorkoutCards from "../components/WorkoutCards.vue";
+import DisplayExercises from "../components/DisplayExercises.vue";
 
 export default {
   name: "Home",
   components: {
-    // UserColumn,
-
-   
+    UserColumn,
     WorkoutCards,
-    // CreateWorkout,
-   
-    
+    DisplayExercises,
   },
 };
-
-
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

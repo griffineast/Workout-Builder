@@ -2,20 +2,24 @@ import axios from "axios";
 export default {
   
 
-  // not final, need to implement on backend
-  getWorkoutByName(name) {
-    return axios.get(`/workout/${name}`)
+  getWorkouts() {
+    return axios.get(`/workout`);
   },
 
+  addExerciseToWorkout(workout, exercise_id) {
+    return axios.post(`/workout/add/${exercise_id}`, workout)
+  },
 
   getWorkoutExercises(name) {
     return axios.get(`/workout/${name}`);
   },
 
-  getWorkouts() {
-    return axios.get(`/workout`);
+  // not final, need to implement on backend
+  getWorkoutByName(name) {
+    return axios.get(`/workout/${name}`)
   },
 
+ 
   addWorkout(workout) {
     return axios.post(`/workout/add`, workout);
   },
@@ -27,5 +31,7 @@ export default {
   deleteWorkout(id) {
     return axios.delete(`/workout/delete/${id}`);
   },
+
+  
   
 };

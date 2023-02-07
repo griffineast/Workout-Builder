@@ -28,8 +28,8 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
-    public Workout getWorkoutByName(@PathVariable String workoutName) {
-        return workoutDao.getWorkoutByName(workoutName);
+    public Workout getWorkoutByName(@PathVariable String name) {
+        return workoutDao.getWorkoutByName(name);
     }
 
     @RequestMapping(path = "/workout/add/{exercise_id}", method = RequestMethod.POST)

@@ -1,6 +1,9 @@
 <template>
   <div>
-      <exercise-cards/>
+      <!-- Binds currentWorkout to the workout prop in ExerciseCards -->
+      <exercise-cards 
+      :workout="this.currentWorkout"
+      />
       
 
   </div>
@@ -8,6 +11,7 @@
 
 <script>
 import service from "../services/WorkoutService.js";
+
 import ExerciseCards from './ExerciseCards.vue'
 export default {
     created() {
@@ -20,7 +24,7 @@ export default {
   },
   data() {
       return {
-          currentWorkout: {},
+          currentWorkout: null,
           exercises: []
       }
 

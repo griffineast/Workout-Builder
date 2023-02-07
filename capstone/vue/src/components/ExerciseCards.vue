@@ -45,7 +45,7 @@
             <!-- Add to workout button -->
             <button 
             class="btn btn-primary add-btn"
-            @click="addToWorkout()"
+            @click="addToWorkout(exercise.exercise_id)"
             >
               <i class="bi bi-plus-square"></i>
             </button>
@@ -75,11 +75,13 @@
 </template>
 
 <script>
+import workoutService from "../services/WorkoutService.js";
 import service from "../services/ExerciseService.js";
 import { isTrainer } from "../util/util.js";
 export default {
   // displays the list of exercises when page is loaded
   created() {
+  
     service.getExercises().then((response) => {
       if (response.status === 200) {
         this.$store.state.exercises = response.data;
@@ -92,6 +94,8 @@ export default {
       }
     });
   },
+  //this prop is used in AddExerciseToWorkout
+  props: {workout: Object},
 
   data() {
     return {
@@ -135,10 +139,13 @@ export default {
         return exercise.target_area.includes(target);
       });
     },
-    addToWorkout(name, id) {
-      name;
-      id;
-      // id = this.exercise.exercise_id;
+    addToWorkout(id) {
+      workoutService.addExerciseToWorkout(this.$props.workout, id).then((response) => {
+        if(response.status !== 200) {
+          return;
+        }
+        alert("Exercise Added!")
+      })
 
     }
   },

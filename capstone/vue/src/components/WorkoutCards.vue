@@ -17,10 +17,10 @@
           <div class="card-details">
             <h5
             v-for="exercise in workout.exercises"
-            :key="exercise"
+            :key="exercise.exercise_id"
            
              >
-              Exercise: {{ exercise.exercise_name }}
+               {{ exercise.exercise_name }}
             </h5>
           </div>
 

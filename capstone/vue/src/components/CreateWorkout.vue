@@ -9,12 +9,12 @@
       {{this.btnText}}
     </button>
 
-    <button
+    <!-- <button
       class="btn btn-primary new-workout-btn shadow-sm"
       @click="newWorkout"
     >
       {{this.btnText}}
-    </button>
+    </button> -->
 
     </div>
 

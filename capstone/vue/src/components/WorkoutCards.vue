@@ -10,15 +10,19 @@
         <!-- Card Container -->
         <div class="workouts shadow-sm">
           <!-- Card Details -->
-          <h4 class="card-title">{{ workout.name }}</h4>
+          <h4 class="card-title">{{ workout.workout_name }}</h4>
 
           <!-- TODO: loop through exercsises for the workout -->
 
           <div class="card-details">
-            <p>Exercise: {{ workout.exercises[0].exercise_name }}</p>
-
+            <p
+            v-for="exercise in workout.exercises"
+            :key="exercise"
+           
+             >
+              Exercise: {{ exercise.exercise_name }}
+            </p>
           </div>
-
 
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
@@ -60,13 +64,12 @@ import { isTrainer } from "../util/util.js";
 export default {
   // displays the list of workouts when page is loaded
   created() {
-
     service.getWorkouts().then((response) => {
       if (response.status === 200) {
         this.$store.state.workouts = response.data;
         this.workouts = response.data;
+        console.log(this.workouts);
       }
-
     });
 
     // const name = this.$route.params.name;
@@ -81,15 +84,14 @@ export default {
 
   data() {
     return {
+      exercises: [],
       workout: {},
-      workoutName: '',
+      workoutName: "",
       workouts: [],
     };
   },
   methods: {
     isTrainer,
-
-    
   },
 };
 </script>

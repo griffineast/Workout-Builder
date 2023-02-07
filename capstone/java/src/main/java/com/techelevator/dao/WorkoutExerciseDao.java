@@ -9,7 +9,9 @@ import java.util.List;
 public interface WorkoutExerciseDao {
     ArrayList<Workout> allWorkouts();
 
-    WorkoutExercise getWorkoutExerciseById(int workout_exercise_id);
+    Workout getWorkoutByName(String workout_name);
+
+    boolean addExerciseToWorkout(Workout workout, int exercise_id);
 
     boolean createWorkoutExercise(WorkoutExercise workoutExercise);
 

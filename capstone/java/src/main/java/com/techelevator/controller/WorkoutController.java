@@ -27,11 +27,17 @@ public class WorkoutController {
         return workoutDao.allWorkouts();
     }
 
-    @RequestMapping(path = "/workout/add", method = RequestMethod.POST)
-    public WorkoutExercise addNewWorkoutExercise(@RequestBody WorkoutExercise workoutExercise) {
-        workoutDao.createWorkoutExercise(workoutExercise);
-        return workoutExercise;
+    @RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
+    public Workout getWorkoutByName(@PathVariable String workoutName) {
+        return workoutDao.getWorkoutByName(workoutName);
     }
+
+    @RequestMapping(path = "/workout/add/{exercise_id}", method = RequestMethod.POST)
+    public boolean addExerciseToWorkout(@RequestBody Workout workout, @PathVariable int exercise_id) {
+        return workoutDao.addExerciseToWorkout(workout, exercise_id);
+    }
+
+
 
     @RequestMapping(path = "/workout/edit/{id}", method = RequestMethod.PUT)
     public WorkoutExercise updateWorkoutExercise(@RequestBody WorkoutExercise workout, @PathVariable int id) {
@@ -44,16 +50,16 @@ public class WorkoutController {
         }
     }
 
-    @RequestMapping(path = "/workout/delete/{id}", method = RequestMethod.DELETE)
-    public void deleteWorkoutExercise(@PathVariable int id) {
-        WorkoutExercise workoutToDelete = workoutDao.getWorkoutExerciseById(id);
-        if (workoutToDelete == null) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No such id: " + id);
-        }
-        else {
-            workoutDao.deleteWorkoutExercise(id);
-        }
-    }
+    //@RequestMapping(path = "/workout/delete/{id}", method = RequestMethod.DELETE)
+    //public void deleteWorkoutExercise(@PathVariable int id) {
+        //WorkoutExercise workoutToDelete = workoutDao.getWorkoutExerciseById(id);
+        //if (workoutToDelete == null) {
+            //throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No such id: " + id);
+        //}
+        //else {
+            //workoutDao.deleteWorkoutExercise(id);
+        //}
+    //}
 
     //@RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
     //public ArrayList<String> getWorkoutExercises(@PathVariable String name) {
@@ -64,10 +70,5 @@ public class WorkoutController {
             //exercisesNames.add(exercise.getExercise_name());
         //}
         //return exercisesNames;
-    //}
-
-    //@RequestMapping(path = "/workout/{name}", method = RequestMethod.GET)
-    //public ArrayList<Integer> getWorkoutExercisesID(@PathVariable String name) {
-        //return workoutDao.getWorkoutExercises(name);
     //}
 }

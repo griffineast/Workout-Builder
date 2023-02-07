@@ -9,13 +9,12 @@
     <div class="col-6">
     <div class="text-center">
     <h1>What would you like to hit today?</h1>
-            <button class="btn btn-primary mx-2">Legs</button>
-            <button class="btn btn-primary mx-2">Shoulders</button>
-            <button class="btn btn-primary mx-2"> Arms</button>
-            <button class="btn btn-primary mx-2">Chest</button>
-            <button class="btn btn-primary mx-2">Cardio</button>
-            <button class="btn btn-primary mx-2">Abs</button>
-            <button class="btn btn-primary mx-5">I'm Feeling Lucky!</button>
+        <div class="target-btns">
+            <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
+                {{btn.name}}
+            </button>
+        </div>
+            <button class="btn btn-primary mx-5" :class="{active:isActive}" @click="isActive = !isActive">I'm Feeling Lucky!</button>
             </div> 
             </div>
     <div class="mx-auto" style="width: 220px;">
@@ -34,7 +33,26 @@
 export default {
     data() {
         return{
-
+            isActive: false,
+            buttons: [{name: 'Legs', active: false}, 
+            {name: 'Shoulders', active: false}, 
+            {name: 'Biceps', active: false}, 
+            {name: 'Triceps', active: false}, 
+            {name: 'Chest', active: false}, 
+            {name: 'Back', active: false}, 
+            {name: 'Cardio', active: false}, 
+            {name: 'Abs', active: false}]
+        };
+    },
+    methods: {
+       toggleActiveClass: function(index){
+     this.buttons[index].active=!this.buttons[index].active;
+        },
+        toggleImFeelingLucky: function(event) {
+            event.isActive = !event.enable;
+            this.buttons.forEach(function(button) {
+                button.active = false;
+            })
         }
     }
 
@@ -56,5 +74,9 @@ export default {
 }
 .body{
     background-color: cornflowerblue;
+}
+
+.active {
+    background-color:cyan;
 }
 </style>

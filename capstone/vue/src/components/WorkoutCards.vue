@@ -14,7 +14,7 @@
 
           <!-- TODO: loop through exercsises for the workout -->
           <div class="card-details">
-            <p>Exercise: {{ workout.exercise }}</p>
+            <p>Exercise: {{ workout.exercises[0].exercise_name }}</p>
           </div>
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->

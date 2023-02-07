@@ -15,20 +15,20 @@
           <!-- TODO: loop through exercsises for the workout -->
 
           <div class="card-details">
-            <p
+            <h5
             v-for="exercise in workout.exercises"
             :key="exercise"
            
              >
               Exercise: {{ exercise.exercise_name }}
-            </p>
+            </h5>
           </div>
 
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
             <!-- Add new exercise to workout button -->
             <button
-              @click="addExerciseToWorkout(workout.workout_id)"
+              @click="updateWorkout(workout.workout_name)"
               class="btn btn-primary add-btn"
             >
               <i class="bi bi-plus-square"></i>
@@ -36,12 +36,12 @@
 
             <!-- TODO: Create updateWorkout method -->
             <!-- Edit button -->
-            <button
-              @click="updateWorkout(workout.workout_id)"
+            <!-- <button
+              @click="updateWorkout(workout.workout_name)"
               class="btn btn-primary edit-btn"
             >
               <i class="bi bi-pencil"></i>
-            </button>
+            </button> -->
 
             <!-- TODO: Create deleteWorkout method -->
             <!-- Delete button -->
@@ -81,7 +81,7 @@ export default {
 
     // });
   },
-
+ 
   data() {
     return {
       exercises: [],
@@ -92,6 +92,9 @@ export default {
   },
   methods: {
     isTrainer,
+    updateWorkout(name) {
+      this.$router.push({ path: `/update/${name}` });
+    }
   },
 };
 </script>

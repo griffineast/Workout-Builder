@@ -5,7 +5,7 @@
     
     
     <workout-cards/>
-    <create-workout/>
+    <!-- <create-workout/> -->
 
     
     
@@ -16,7 +16,7 @@
 
 <script>
 // import UserColumn from '../components/UserColumn.vue';
-import CreateWorkout from '../components/CreateWorkout.vue';
+// import CreateWorkout from '../components/CreateWorkout.vue';
 import WorkoutCards from '../components/WorkoutCards.vue';
 
 
@@ -27,7 +27,7 @@ export default {
 
    
     WorkoutCards,
-    CreateWorkout,
+    // CreateWorkout,
    
     
   },

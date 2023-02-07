@@ -43,7 +43,10 @@
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
             <!-- Add to workout button -->
-            <button class="btn btn-primary add-btn">
+            <button 
+            class="btn btn-primary add-btn"
+            @click="addToWorkout()"
+            >
               <i class="bi bi-plus-square"></i>
             </button>
 
@@ -92,7 +95,15 @@ export default {
 
   data() {
     return {
-      exercise: {},
+      exercise: {
+        exercise_id: 0,
+        exercise_name: '',
+        exercise_description: '',
+        suggested_weight: 0,
+        num_of_reps: 0,
+        duration: 0, 
+        target_area: ''
+      },
       exercises: [],
       filters: []
     };
@@ -124,6 +135,12 @@ export default {
         return exercise.target_area.includes(target);
       });
     },
+    addToWorkout(name, id) {
+      name;
+      id;
+      // id = this.exercise.exercise_id;
+
+    }
   },
 };
 </script>

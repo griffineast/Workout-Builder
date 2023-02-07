@@ -2,7 +2,12 @@ import axios from "axios";
 export default {
   
 
-  
+  // not final, need to implement on backend
+  getWorkoutByName(name) {
+    return axios.get(`/workout/${name}`)
+  },
+
+
   getWorkoutExercises(name) {
     return axios.get(`/workout/${name}`);
   },

@@ -2,9 +2,9 @@ import axios from "axios";
 export default {
 
 
-    listExercises() {
-        return axios.get(`/exercise`);
-    },
+listExercises() {
+ return axios.get(`/exercise`);
+},
 
 
   getExercises() {

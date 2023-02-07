@@ -1,12 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Workout;
 import com.techelevator.model.WorkoutExercise;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public interface WorkoutExerciseDao {
-    List<String> allWorkouts();
+    ArrayList<Workout> allWorkouts();
 
     WorkoutExercise getWorkoutExerciseById(int workout_exercise_id);
 
@@ -16,5 +17,5 @@ public interface WorkoutExerciseDao {
 
     void deleteWorkoutExercise(int id);
 
-    ArrayList<Integer> getWorkoutExercises(String name);
+    //ArrayList<Integer> getWorkoutExercises(String name);
 }

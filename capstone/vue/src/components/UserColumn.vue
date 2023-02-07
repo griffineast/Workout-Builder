@@ -11,7 +11,7 @@
     <h1>What would you like to hit today?</h1>
             <button class="btn btn-primary mx-2">Legs</button>
             <button class="btn btn-primary mx-2">Shoulders</button>
-            <button class="btn btn-primary mx-2"> Arms</button>
+            <button class="btn btn-primary mx-2">Arms</button>
             <button class="btn btn-primary mx-2">Chest</button>
             <button class="btn btn-primary mx-2">Cardio</button>
             <button class="btn btn-primary mx-2">Abs</button>
@@ -34,7 +34,6 @@
 export default {
     data() {
         return{
-
         }
     }
 
@@ -54,7 +53,5 @@ export default {
     border-block: 10rem;
     margin: 10rem 6rem;
 }
-.body{
-    background-color: cornflowerblue;
-}
+
 </style>

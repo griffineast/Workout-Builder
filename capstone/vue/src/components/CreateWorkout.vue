@@ -9,6 +9,7 @@
         Add Workout
       </button>
 
+      <!-- <div class="workout-form"> -->
       <form @submit.prevent="newWorkout" v-if="showForm === true">
         <div class="form-group mb-2">
           <label for="name">Workout Name: </label>
@@ -22,7 +23,7 @@
         </div>
 
         <button
-          class="btn btn-primary add-exercise-btn shadow-sm"
+          class="btn btn-primary add-workout-btn shadow-sm"
           v-if="showForm === true"
           type="submit"
         >
@@ -37,22 +38,8 @@
           Cancel
         </button>
       </form>
+    
     </div>
-
-    <!-- <div class="text-center">
-    <button
-      class="btn btn-primary show-exercises-btn shadow-sm"
-      @click="toggleView"
-    >
-      {{this.btnText}}
-    </button>
-    </div> -->
-
-    <!-- Display all exercises. Implement button on exercise cards 
-    that will add to the workout -->
-    <!-- <div class="view-exercises" v-if="expanded === true">
-      <exercise-cards />
-    </div> -->
   </div>
 </template>
 
@@ -110,10 +97,45 @@ export default {
 </script>
 
 <style scoped>
+
+.create-workout {
+  width: 50%;
+  min-width: 200px;
+  max-width: 300px;
+  top: 40%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .show-exercises-btn {
   width: 50%;
   min-width: 300px;
   max-width: 400px;
   width: 100;
+}
+
+.show-form-btn {
+  margin-top: 50px;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+
+.add-workout-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+.cancel-btn {
+  background-color: rgb(182, 182, 182);
+  border-color: rgb(173, 173, 173);
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: rgb(128, 128, 128);
+  border-color: rgb(100, 100, 100);
 }
 </style>

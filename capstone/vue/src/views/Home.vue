@@ -1,8 +1,9 @@
 <template>
   <div class="home">
- 
-    <user-column />
-    <workout-cards />
+   <user-column />
+    
+    <!-- <my-workouts/> -->
+    <workout-cards/>
     <create-workout/>
   </div>
 </template>
@@ -17,6 +18,7 @@ export default {
   name: "Home",
   components: {
     UserColumn,
+    // MyWorkouts,
     WorkoutCards,
     CreateWorkout,
   },

@@ -1,8 +1,15 @@
 BEGIN TRANSACTION;
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('john','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('steve','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+
+
+
+
+INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area)
+VALUES ('Warm-Up', 'Begin your workout with a quick jog and stretch to warm-up and prepare your body for aerobic activities.'
+		, 0, 0, 5, 'Cardio');
 
 INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area)
 VALUES ('Pull-Up', 'Hang from a pull-up bar by your hands with your palms facing away from you, and lifting your entire body up with your arm and back muscles.', 150, 8, 5, 'Biceps');
@@ -84,9 +91,7 @@ INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num
 INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES ('Deadlifts', 'Stand with feet hip-width apart, holding a barbell in front of your thighs. Keeping your back straight, bend at the hips and lower the bar to the ground. Push through your heels to return to the starting position.', 200, 12, 10, 'Legs');
 INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area) VALUES ('Calf Raises', 'Stand with feet hip-width apart, holding a barbell or dumbbells for added resistance. Raise your heels off the ground as high as you can. Lower your heels back to the starting position.', 100, 12, 10, 'Legs');
 
-INSERT INTO exercise (exercise_name, exercise_description, suggested_weight, num_of_reps, duration, target_area)
-VALUES ('Squat', 'A compound, multi-joint exercise designed to target many muscles of the lower body.
-', 200, 10, 10, 'Legs');
+
 
 
 

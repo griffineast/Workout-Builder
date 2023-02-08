@@ -162,6 +162,7 @@ export default {
   min-width: 300px;
   max-width: 400px;
   width: 100;
+  margin-bottom: 50px;
 }
 
 .add-exercise-btn {

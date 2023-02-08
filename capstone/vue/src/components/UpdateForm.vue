@@ -103,6 +103,7 @@ export default {
     const idPassed = this.$route.params.id;
     service.getExerciseById(idPassed).then((response) => {
       this.currentExercise = response.data;
+      
     });
   },
   data() {

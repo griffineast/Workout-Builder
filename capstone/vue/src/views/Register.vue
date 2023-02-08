@@ -1,6 +1,6 @@
 <template>
   <div class="row g-0">
-    <div class="col-4">
+    <div class="col-4 d-none d-md-block">
       <div class="welcome-container text-center">
         <div class="welcome-info text-start">
           <div class="title-container">
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div id="register" class="text-center col-8">
+    <div id="register" class="text-center col-xs-12 col-8">
       <form class="form-register" @submit.prevent="register">
         <img src="/img/elevate-health-icon.png" width="100" /><br /><br />
 

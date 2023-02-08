@@ -1,7 +1,8 @@
 <template>
   <div class="nav-bar">
+    <div style="height: 97px;"/>
     <nav
-      class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3"
+      class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3 fixed-top"
       id="navbar"
     >
       <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">
@@ -18,10 +19,17 @@
           </router-link>
 
           <router-link
-            class="home-btn nav-item nav-link active"
+            class="home-btn nav-item nav-link active "
             v-bind:to="{ name: 'Exercise' }"
             v-if="$store.state.token != ''"
             >Exercises</router-link
+          >
+
+           <router-link
+            class="home-btn nav-item nav-link active"
+            v-bind:to="{ name: 'Trainer' }"
+            v-if="$store.state.token != '' && isTrainer()"
+            >Trainer</router-link
           >
 
           <router-link
@@ -37,7 +45,14 @@
 </template>
 
 <script>
-export default {};
+import { isTrainer } from "../util/util.js";
+export default {
+
+  methods: {
+    isTrainer
+  }
+
+};
 </script>
 
 <style>

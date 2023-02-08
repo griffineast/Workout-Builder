@@ -9,12 +9,17 @@
     <div class="col-6">
     <div class="text-center">
     <h1>What would you like to hit today?</h1>
+
         <div class="target-btns">
-            <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
+            <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn.id" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
                 {{btn.name}}
             </button>
         </div>
+<<<<<<< HEAD
             <button class="btn btn-primary mx-5" :class="{active:isActive}" @click= "toggleImFeelingLucky">I'm Feeling Lucky!</button>
+=======
+            <button class="btn btn-primary mx-5" :class="{active:luckyButton.active}" @click="toggleImFeelingLucky">I'm Feeling Lucky!</button>
+>>>>>>> main
             </div> 
             </div>
     <div class="mx-auto" style="width: 220px;">
@@ -33,7 +38,7 @@
 export default {
     data() {
         return{
-            isActive: false,
+            luckyButton: {name: 'Im feeling lucky!', active: false},
             buttons: [{name: 'Legs', active: false}, 
             {name: 'Shoulders', active: false}, 
             {name: 'Biceps', active: false}, 
@@ -48,8 +53,8 @@ export default {
        toggleActiveClass: function(index){
      this.buttons[index].active=!this.buttons[index].active;
         },
-        toggleImFeelingLucky: function(event) {
-            event.isActive = !event.enable;
+        toggleImFeelingLucky: function() {
+            this.luckyButton.active=!this.luckyButton.active;
             this.buttons.forEach(function(button) {
                 button.active = false;
             })
@@ -72,6 +77,7 @@ export default {
     border-block: 10rem;
     margin: 10rem 6rem;
 }
+
 .body{
     background-color: cornflowerblue;
 }

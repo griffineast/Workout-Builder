@@ -14,7 +14,7 @@
                 {{btn.name}}
             </button>
         </div>
-            <button class="btn btn-primary mx-5" :class="{active:isActive}" @click="isActive = !isActive">I'm Feeling Lucky!</button>
+            <button class="btn btn-primary mx-5" :class="{active:isActive}" @click= "toggleImFeelingLucky">I'm Feeling Lucky!</button>
             </div> 
             </div>
     <div class="mx-auto" style="width: 220px;">

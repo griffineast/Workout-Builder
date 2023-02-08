@@ -1,8 +1,11 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class Workout {
+    @JsonProperty("workout_name")
     private String workout_name;
     private ArrayList<Exercise> exercises;
 

@@ -16,11 +16,18 @@
 
           <div class="card-details">
             <h5
-            v-for="exercise in workout.exercises"
-            :key="exercise.exercise_id"
-           
-             >
-               {{ exercise.exercise_name }}
+              v-for="exercise in workout.exercises"
+              :key="exercise.exercise_id"
+            >
+              {{ exercise.exercise_name }}
+
+              <button 
+              class="remove-exercise-btn"
+              @click="removeExerciseFromWorkout(workout.workout_name, exercise.exercise_id)"
+              >
+                <i class="bi bi-x"></i>
+              </button>
+
             </h5>
           </div>
 
@@ -55,15 +62,9 @@ import { isTrainer } from "../util/util.js";
 export default {
   // displays the list of workouts when page is loaded
   created() {
-    service.getWorkouts().then((response) => {
-      if (response.status === 200) {
-        this.$store.state.workouts = response.data;
-        this.workouts = response.data;
-      }
-    });
-
+    this.getWorkouts();
   },
- 
+
   data() {
     return {
       exercises: [],
@@ -73,17 +74,43 @@ export default {
     };
   },
   methods: {
+    getWorkouts(){
+    service.getWorkouts().then((response) => {
+      if (response.status === 200) {
+        this.$store.state.workouts = response.data;
+        this.workouts = response.data;
+      }
+    });
+    },
     isTrainer,
     updateWorkout(name) {
       this.$router.push({ path: `/update/${name}` });
     },
     deleteWorkout(name) {
+      if (
+        !window.confirm("Are you sure you would like to delete this workout?")
+      )
+        return;
       service.deleteWorkout(name).then((response) => {
-        if(response.status !== 200) {
+        if (response.status !== 200) {
           return;
         }
         this.$store.commit("DELETE_WORKOUT", name);
       });
+    },
+    removeExerciseFromWorkout(workout_name, id) {
+      if (
+        !window.confirm("Are you sure you would like to delete this workout?")
+      )
+        return;
+      service.removeExerciseFromWorkout(workout_name, id ).then((response) => {
+        if(response.status == 200){
+          this.getWorkouts();
+        }
+        if (response.status !== 200) {
+          return
+        }
+      })
     }
   },
 };
@@ -164,6 +191,19 @@ export default {
 .delete-btn:active {
   background-color: transparent;
 }
+
+.remove-exercise-btn {
+  color: transparent;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+.remove-exercise-btn:hover {
+  color: rgb(219, 68, 55);
+}
+
+
 
 .card-details p {
   margin-top: 0px;

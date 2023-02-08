@@ -43,9 +43,9 @@
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
             <!-- Add to workout button -->
-            <button 
-            class="btn btn-primary add-btn"
-            @click="addToWorkout(exercise.exercise_id)"
+            <button
+              class="btn btn-primary add-btn"
+              @click="addToWorkout(exercise.exercise_id)"
             >
               <i class="bi bi-plus-square"></i>
             </button>
@@ -81,35 +81,34 @@ import { isTrainer } from "../util/util.js";
 export default {
   // displays the list of exercises when page is loaded
   created() {
-  
     service.getExercises().then((response) => {
       if (response.status === 200) {
         this.$store.state.exercises = response.data;
         this.exercises = response.data;
         const targetAreas = this.exercises.map((exercise) => {
-          return exercise.target_area
+          return exercise.target_area;
         });
-    // filters out any duplicate target areas in the array
-        this.filters = [...new Set(targetAreas)]
+        // filters out any duplicate target areas in the array
+        this.filters = [...new Set(targetAreas)];
       }
     });
   },
   //this prop is used in AddExerciseToWorkout
-  props: {workout: Object},
+  props: { workout: Object },
 
   data() {
     return {
       exercise: {
         exercise_id: 0,
-        exercise_name: '',
-        exercise_description: '',
+        exercise_name: "",
+        exercise_description: "",
         suggested_weight: 0,
         num_of_reps: 0,
-        duration: 0, 
-        target_area: ''
+        duration: 0,
+        target_area: "",
       },
       exercises: [],
-      filters: []
+      filters: [],
     };
   },
   methods: {
@@ -140,14 +139,15 @@ export default {
       });
     },
     addToWorkout(id) {
-      workoutService.addExerciseToWorkout(this.$props.workout, id).then((response) => {
-        if(response.status !== 200) {
-          return;
-        }
-        alert("Exercise Added!")
-      })
-
-    }
+      workoutService
+        .addExerciseToWorkout(this.$props.workout, id)
+        .then((response) => {
+          if (response.status !== 200) {
+            return;
+          }
+          alert("Exercise Added!");
+        });
+    },
   },
 };
 </script>

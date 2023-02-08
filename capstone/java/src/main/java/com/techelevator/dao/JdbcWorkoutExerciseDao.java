@@ -89,12 +89,12 @@ public class JdbcWorkoutExerciseDao implements WorkoutExerciseDao {
     }
 
     @Override
-    public void removeExerciseFromWorkout(Workout workout, int exercise_id) {
+    public void removeExerciseFromWorkout(String workoutName, int exercise_id) {
         String sql = "DELETE FROM workout_exercise WHERE workout_name = ? AND exercise = ?";
         try {
-            jdbcTemplate.update(sql, workout.getWorkout_name(), exercise_id);
+            jdbcTemplate.update(sql, workoutName, exercise_id);
         } catch (DataAccessException e){
-            System.out.println("Failed to delete exercise with id: " + exercise_id + " from " + workout.getWorkout_name() + "!");
+            System.out.println("Failed to delete exercise with id: " + exercise_id + " from " + workoutName + "!");
         }
     }
 

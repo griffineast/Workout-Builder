@@ -1,16 +1,15 @@
 <template>
   <div class="create-workout">
-      <div class="workout-form text-center">
+    <div class="workout-form text-center">
       <button
         class="btn btn-primary show-form-btn shadow-sm"
         v-if="showForm === false"
         v-on:click.prevent="toggleMenu"
       >
-       Add Workout
+        Add Workout
       </button>
-      
 
-     <form @submit.prevent="newWorkout" v-if="showForm === true">
+      <form @submit.prevent="newWorkout" v-if="showForm === true">
         <div class="form-group mb-2">
           <label for="name">Workout Name: </label>
           <input
@@ -37,10 +36,8 @@
         >
           Cancel
         </button>
-     </form>
-     </div>
-
-
+      </form>
+    </div>
 
     <!-- <div class="text-center">
     <button
@@ -71,28 +68,29 @@ export default {
     return {
       showForm: false,
       workout: {},
-      workoutName: '',
+      workoutName: "",
       expanded: false,
       btnText: "View Exercises",
     };
   },
   methods: {
-    newWorkout(){
-      service.createWorkout(this.workoutName).then((response) =>{
-          if(response.status === 200) {
-            this.$store.commit("ADD_WORKOUT", {workout_name: this.workoutName, exercises: [{exercise_id: 1, exercise_name: "Warm-Up"}]});
-            this.workoutName = '';
-           
-          }
+    newWorkout() {
+      service.createWorkout(this.workoutName).then((response) => {
+        if (response.status === 200) {
+          this.$store.commit("ADD_WORKOUT", {
+            workout_name: this.workoutName,
+            exercises: [{ exercise_id: 1, exercise_name: "Warm-Up" }],
+          });
+          this.workoutName = "";
+        }
       });
     },
-     resetForm() {
+    resetForm() {
       this.showForm = false;
       this.workout = {};
       document.getElementById("navbar").scrollIntoView();
     },
     toggleMenu() {
-      console.log(this.showForm)
       this.showForm = true;
       setTimeout(() => {
         document.getElementById("workout-form").scrollIntoView();
@@ -104,7 +102,7 @@ export default {
       if (this.expanded) {
         this.btnText = "Hide Exercises";
       } else {
-        this.btnText = "View Exercises"; 
+        this.btnText = "View Exercises";
       }
     },
   },
@@ -112,14 +110,10 @@ export default {
 </script>
 
 <style scoped>
-
-
 .show-exercises-btn {
   width: 50%;
   min-width: 300px;
   max-width: 400px;
   width: 100;
 }
-
-
 </style>

@@ -11,7 +11,7 @@
     <h1>What would you like to hit today?</h1>
 
         <div class="target-btns">
-            <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
+            <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn.id" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
                 {{btn.name}}
             </button>
         </div>

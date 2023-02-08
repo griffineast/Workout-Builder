@@ -2,17 +2,17 @@
   <div>
       <trainer-hero />
       <exercise-cards />
-      <exercise-form />
+      <create-exercise />
 
   </div>
 </template>
 
 <script>
 import ExerciseCards from '../components/ExerciseCards.vue'
-import ExerciseForm from '../components/CreateExercise.vue'
+import CreateExercise from '../components/CreateExercise.vue'
 import TrainerHero from '../components/TrainerHero.vue'
 export default {
-  components: { TrainerHero, ExerciseForm, ExerciseCards },
+  components: { TrainerHero, CreateExercise, ExerciseCards },
     name: "Trainer"
 
 }

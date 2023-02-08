@@ -1,7 +1,8 @@
 <template>
   <div class="nav-bar">
+    <div style="height: 97px;"/>
     <nav
-      class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3"
+      class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3 fixed-top"
       id="navbar"
     >
       <router-link class="navbar-brand" v-bind:to="{ name: 'home' }">

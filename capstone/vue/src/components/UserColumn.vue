@@ -14,7 +14,7 @@
         <div class="target-btns">
             <button class="btn btn-primary mx-2" v-for= "(btn, index) in buttons" v-bind:key="btn.id" @click="toggleActiveClass(index)" :class= "{active: btn.active}">
                 {{btn.name}}
->>>>>>> main
+
             </button>
           </div>
           <button
@@ -38,8 +38,8 @@
  <tr> <button class="btn btn-primary mt-2"> Blocked Workouts</button></tr> 
 </div>
     </div>
-    </div>
-  </div>
+    
+  
 </template>
 
 <script>

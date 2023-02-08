@@ -201,6 +201,8 @@ export default {
 
 .remove-exercise-btn:hover {
   color: rgb(219, 68, 55);
+  
+ 
 }
 
 

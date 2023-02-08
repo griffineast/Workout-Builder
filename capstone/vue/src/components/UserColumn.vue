@@ -24,7 +24,10 @@
             I'm Feeling Lucky!
           </button>
         </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
             <button class="btn btn-primary mx-5" :class="{active:luckyButton.active}" @click="toggleImFeelingLucky">I'm Feeling Lucky!</button>
             </div> 
             </div>

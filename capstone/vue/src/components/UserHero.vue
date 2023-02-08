@@ -5,9 +5,9 @@
           <div class="col-1">
 
 
-        <h1 class="welcome">Welcome<br> Back</h1>
+        <h1 class="welcome">Welcome Back</h1>
         <div class="body-text">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa id neque aliquam </p>
+        <p>Welcome to your fitness journey! We are excited to have you as a member of our community. Your user page is your personal hub for tracking your progress and setting your fitness goals. With our app, you’ll have access to a variety of workout routines and a supportive community to keep you motivated. Let’s get started on your path to a healthier, happier you!</p>
         </div>
 
           </div>
@@ -43,7 +43,7 @@ export default {};
 
 .body-text {
     margin-left: 50px;
-    width: 300px;
+    width: 400px;
     color: ghostwhite;
      margin-top: 0%;
     margin-bottom: 50%;

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
    <!-- <user-column /> -->
-    <trainer-hero />
+    <user-hero />
     <!-- <my-workouts/> -->
     <workout-cards/>
     <create-workout/>
@@ -13,7 +13,7 @@
 import WorkoutCards from "../components/WorkoutCards.vue";
 
 import CreateWorkout from '../components/CreateWorkout.vue';
-import TrainerHero from '../components/TrainerHero.vue';
+import UserHero from '../components/UserHero.vue';
 
 export default {
   name: "Home",
@@ -22,7 +22,7 @@ export default {
     // MyWorkouts,
     WorkoutCards,
     CreateWorkout,
-    TrainerHero,
+    UserHero,
   },
 };
 </script>

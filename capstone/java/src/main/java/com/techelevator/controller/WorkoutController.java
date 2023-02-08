@@ -35,12 +35,12 @@ public class WorkoutController {
         workoutDao.removeExerciseFromWorkout(workout, exercise_id);
     }
 
-    @RequestMapping(path = "/workout/create/{name}", method = RequestMethod.POST)
-    public void createWorkout(@PathVariable String name) {
-        workoutDao.createWorkout(name);
+    @RequestMapping(path = "/workout/create", method = RequestMethod.POST)
+    public void createWorkout(@RequestBody Workout workout) {
+        workoutDao.createWorkout(workout.getWorkout_name());
     }
 
-    @RequestMapping(path = "/workout/delete/{name}")
+    @RequestMapping(path = "/workout/delete/{name}", method = RequestMethod.DELETE)
     public void deleteWorkout(@PathVariable String name) {
         workoutDao.deleteWorkout(name);
     }

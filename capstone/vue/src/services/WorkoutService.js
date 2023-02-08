@@ -19,7 +19,7 @@ export default {
   },
 
   createWorkout(name) {
-    return axios.post(`/workout/create/${name}`)
+    return axios.post(`/workout/create`, {workout_name: name})
   },
 
   deleteWorkout(name) {

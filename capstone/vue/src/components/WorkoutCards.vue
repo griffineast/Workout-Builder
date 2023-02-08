@@ -34,19 +34,10 @@
               <i class="bi bi-plus-square"></i>
             </button>
 
-            <!-- TODO: Create updateWorkout method -->
-            <!-- Edit button -->
-            <!-- <button
-              @click="updateWorkout(workout.workout_name)"
-              class="btn btn-primary edit-btn"
-            >
-              <i class="bi bi-pencil"></i>
-            </button> -->
-
             <!-- TODO: Create deleteWorkout method -->
             <!-- Delete button -->
             <button
-              @click="deleteWorkout(workout.workout_id)"
+              @click="deleteWorkout(workout.workout_name)"
               class="delete-btn btn"
             >
               <i class="bi bi-trash3"></i>
@@ -68,7 +59,6 @@ export default {
       if (response.status === 200) {
         this.$store.state.workouts = response.data;
         this.workouts = response.data;
-        console.log(this.workouts);
       }
     });
 
@@ -86,6 +76,14 @@ export default {
     isTrainer,
     updateWorkout(name) {
       this.$router.push({ path: `/update/${name}` });
+    },
+    deleteWorkout(name) {
+      service.deleteWorkout(name).then((response) => {
+        if(response.status !== 200) {
+          return;
+        }
+        this.$store.commit("DELETE_WORKOUT", name);
+      });
     }
   },
 };

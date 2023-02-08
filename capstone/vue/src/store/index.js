@@ -49,7 +49,12 @@ export default new Vuex.Store({
     },
     ADD_WORKOUT(state, workout) {
       state.workouts.push(workout);
-    }
+    },
+    DELETE_WORKOUT(state, name) {
+      const index = state.workouts.findIndex(w => w.workout_name === name);
+      if(index > -1) state.workouts.splice(index, 1);
+    },
+    
    
   }
 })

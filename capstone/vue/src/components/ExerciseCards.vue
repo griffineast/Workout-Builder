@@ -43,7 +43,10 @@
           <div class="card-btns">
             <!-- TODO: Create addToWorkout method  -->
             <!-- Add to workout button -->
-            <button class="btn btn-primary add-btn">
+            <button
+              class="btn btn-primary add-btn"
+              @click="addToWorkout(exercise.exercise_id)"
+            >
               <i class="bi bi-plus-square"></i>
             </button>
 
@@ -72,6 +75,7 @@
 </template>
 
 <script>
+import workoutService from "../services/WorkoutService.js";
 import service from "../services/ExerciseService.js";
 import { isTrainer } from "../util/util.js";
 export default {
@@ -82,19 +86,29 @@ export default {
         this.$store.state.exercises = response.data;
         this.exercises = response.data;
         const targetAreas = this.exercises.map((exercise) => {
-          return exercise.target_area
+          return exercise.target_area;
         });
-    // filters out any duplicate target areas in the array
-        this.filters = [...new Set(targetAreas)]
+        // filters out any duplicate target areas in the array
+        this.filters = [...new Set(targetAreas)];
       }
     });
   },
+  //this prop is used in AddExerciseToWorkout
+  props: { workout: Object },
 
   data() {
     return {
-      exercise: {},
+      exercise: {
+        exercise_id: 0,
+        exercise_name: "",
+        exercise_description: "",
+        suggested_weight: 0,
+        num_of_reps: 0,
+        duration: 0,
+        target_area: "",
+      },
       exercises: [],
-      filters: []
+      filters: [],
     };
   },
   methods: {
@@ -123,6 +137,16 @@ export default {
       this.exercises = this.$store.state.exercises.filter((exercise) => {
         return exercise.target_area.includes(target);
       });
+    },
+    addToWorkout(id) {
+      workoutService
+        .addExerciseToWorkout(this.$props.workout, id)
+        .then((response) => {
+          if (response.status !== 200) {
+            return;
+          }
+          alert("Exercise Added!");
+        });
     },
   },
 };

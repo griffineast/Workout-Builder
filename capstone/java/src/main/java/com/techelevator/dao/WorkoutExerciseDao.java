@@ -11,7 +11,7 @@ public interface WorkoutExerciseDao {
 
     boolean addExerciseToWorkout(Workout workout, int exercise_id);
 
-    void removeExerciseFromWorkout(Workout workout, int exercise_id);
+    void removeExerciseFromWorkout(String workoutName, int exercise_id);
 
     void createWorkout(String workout_name);
 

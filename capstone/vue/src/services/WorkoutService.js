@@ -1,22 +1,36 @@
 import axios from "axios";
 export default {
-  getWorkoutExercises(name) {
-    return axios.get(`/workout/exercises/${name}`);
-  },
+  
 
   getWorkouts() {
-    return axios.get("/workout");
+    return axios.get(`/workout`);
   },
 
-  addWorkout(workout) {
-    return axios.post("/workout/add", workout);
+  getWorkoutByName(name) {
+    return axios.get(`/workout/${name}`)
   },
 
-  updateWorkout(workout, id) {
-    return axios.put(`/workout/edit/${id}`, workout);
+  addExerciseToWorkout(workout, exercise_id) {
+    return axios.post(`/workout/add/${exercise_id}`, workout)
   },
 
-  deleteWorkout(id) {
-    return axios.delete(`/workout/delete/${id}`);
+  removeExerciseFromWorkout(workoutName, exercise_id) {
+    return axios.delete(`/workout/remove/${workoutName}/${exercise_id}`)
   },
+
+  createWorkout(name) {
+    return axios.post(`/workout/create`, {workout_name: name})
+  },
+
+  deleteWorkout(name) {
+    return axios.delete(`/workout/delete/${name}`)
+  },
+
+
+
+
+ 
+  
+  
+  
 };

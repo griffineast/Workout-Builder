@@ -31,7 +31,7 @@ const router = new Router({
       component: Home,
       meta: {
         requiresAuth: true,
-        title: "Home",
+        title: "User Dashboard",
       },
     },
     {
@@ -72,7 +72,7 @@ const router = new Router({
       component: Trainer,
       meta: {
         requiresAuth: true,
-        title: "Dashboard",
+        title: "Trainer Dashboard",
       },
     },
     {
@@ -114,7 +114,7 @@ router.beforeEach((to, from, next) => {
 // Dynamically change the document title with meta fields above. If none provided will default to what is set below.
 router.afterEach((to) => {
   Vue.nextTick(() => {
-    document.title = to.meta.title || "Workout Builder";
+    document.title = to.meta.title || "Elevate Health";
   });
 });
 

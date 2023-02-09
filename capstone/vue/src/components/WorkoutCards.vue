@@ -11,23 +11,30 @@
         <div class="workouts shadow-sm">
           <!-- Card Details -->
           <h4 class="card-title">{{ workout.workout_name }}</h4>
+          <hr />
 
-          <!-- TODO: loop through exercsises for the workout -->
+          <!--loop through exercsises for the workout -->
 
           <div class="card-details">
             <h5
               v-for="exercise in workout.exercises"
               :key="exercise.exercise_id"
+              class="text-secondary"
             >
+              <i class="bi bi-caret-right"></i>
               {{ exercise.exercise_name }}
 
-              <button 
-              class="remove-exercise-btn"
-              @click="removeExerciseFromWorkout(workout.workout_name, exercise.exercise_id)"
+              <button
+                class="btn remove-exercise-btn"
+                @click="
+                  removeExerciseFromWorkout(
+                    workout.workout_name,
+                    exercise.exercise_id
+                  )
+                "
               >
-                <i class="bi bi-x"></i>
+                <i class="bi bi-x-circle"></i>
               </button>
-
             </h5>
           </div>
 
@@ -74,13 +81,13 @@ export default {
     };
   },
   methods: {
-    getWorkouts(){
-    service.getWorkouts().then((response) => {
-      if (response.status === 200) {
-        this.$store.state.workouts = response.data;
-        this.workouts = response.data;
-      }
-    });
+    getWorkouts() {
+      service.getWorkouts().then((response) => {
+        if (response.status === 200) {
+          this.$store.state.workouts = response.data;
+          this.workouts = response.data;
+        }
+      });
     },
     isTrainer,
     updateWorkout(name) {
@@ -100,18 +107,18 @@ export default {
     },
     removeExerciseFromWorkout(workout_name, id) {
       if (
-        !window.confirm("Are you sure you would like to delete this workout?")
+        !window.confirm("Are you sure you would like to remove this exercise?")
       )
         return;
-      service.removeExerciseFromWorkout(workout_name, id ).then((response) => {
-        if(response.status == 200){
+      service.removeExerciseFromWorkout(workout_name, id).then((response) => {
+        if (response.status == 200) {
           this.getWorkouts();
         }
         if (response.status !== 200) {
-          return
+          return;
         }
-      })
-    }
+      });
+    },
   },
 };
 </script>
@@ -199,13 +206,18 @@ export default {
   background-color: transparent;
 }
 
-.remove-exercise-btn:hover {
+h5:hover .remove-exercise-btn {
   color: rgb(219, 68, 55);
-  
- 
 }
 
+.remove-exercise-btn {
+  position: relative;
+  bottom: 1px;
+}
 
+i.bi-caret-right {
+  color: darkgray;
+}
 
 .card-details p {
   margin-top: 0px;

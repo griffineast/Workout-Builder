@@ -33,11 +33,12 @@
           <!-- Card Details -->
           <h4 class="card-title">{{ exercise.exercise_name }}</h4>
           <p>{{ exercise.exercise_description }}</p>
-          <div class="card-details">
-            <p>Suggested Weight: {{ exercise.suggested_weight }}lbs.</p>
-            <p>Number of Reps: {{ exercise.num_of_reps }}</p>
-            <p>Duration: {{ exercise.duration }}min.</p>
-            <p>Target Area: {{ exercise.target_area }}</p>
+          <hr class="hr">
+          <div class="card-details text-secondary">
+            <p><span class="fw-bold">Suggested Weight:</span> {{ exercise.suggested_weight }}lbs.</p>
+            <p><span class="fw-bold">Number of Reps: </span> {{ exercise.num_of_reps }}</p>
+            <p><span class="fw-bold">Duration: </span> {{ exercise.duration }}min.</p>
+            <p><span class="fw-bold">Target Area: </span> {{ exercise.target_area }}</p>
           </div>
 
           <div class="card-btns">
@@ -166,6 +167,7 @@ export default {
   width: 100%;
   min-height: 270px;
   position: relative;
+  border-radius: 10px;
 }
 
 .exercises:hover {
@@ -233,9 +235,11 @@ export default {
   margin-bottom: 0px;
 }
 
+
 .card-title {
   color: rgb(219, 68, 55);
   font-style: oblique;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <div style="height: 97px;"/>
+    <div style="height: 92px;"/>
     <nav
       class="navbar navbar-expand-sm navbar-light bg-light shadow-sm py-3 fixed-top"
       id="navbar"
@@ -21,7 +21,7 @@
           <router-link
             class="home-btn nav-item nav-link active "
             v-bind:to="{ name: 'Exercise' }"
-            v-if="$store.state.token != ''"
+            v-if="$store.state.token != '' && !isTrainer()"
             >Exercises</router-link
           >
 
